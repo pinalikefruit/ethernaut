@@ -42,7 +42,7 @@ This will be the dynamic for each challenge:
 
 ## Table of Contents
 
-0. <summary><a href=""> Hello Ethernaut</a></summary>
+0. <summary><a href="https://github.com/pinalikefruit/ethernaut/tree/00-hello-ethernaut"> Hello Ethernaut</a></summary>
 
 
 
@@ -52,6 +52,7 @@ This will be the dynamic for each challenge:
  <p align="left">
  <img src="https://img.shields.io/badge/Solidity-%23363636.svg?style=for-the-badge&logo=solidity&logoColor=white" alt="Solidity">
  <img src="https://img.shields.io/badge/typescript%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white" alt="Typescript"/>
+ <img src="https://img.shields.io/badge/javascript-fff04d?&style=for-the-badge&logo=javascript&logoColor=black" alt="javascript"/>
  <img src="https://img.shields.io/badge/Ethers.js-7A98FB?style=for-the-badge&logo=Ethers.js&logoColor=white" alt="Ethers.js">
  <img src="https://img.shields.io/badge/Hardhat-fff04d?style=for-the-badge&logo=Hardhat&logoColor=white" alt="Hardhat">
  <img src="https://img.shields.io/badge/Mocha-8c6749?style=for-the-badge&logo=Mocha&logoColor=white" alt="Mocha">
