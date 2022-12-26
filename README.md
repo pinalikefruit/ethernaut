@@ -43,6 +43,7 @@ This will be the dynamic for each challenge:
 ## Table of Contents
 
 0. <summary><a href="https://github.com/pinalikefruit/ethernaut/tree/00-hello-ethernaut"> Hello Ethernaut</a></summary>
+1. <summary><a href="https://github.com/pinalikefruit/ethernaut/tree/01-fallback/fallback"> Fallback</a></summary>
 
 
 
