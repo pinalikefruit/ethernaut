@@ -1,4 +1,3 @@
-
 <a name="readme-top"></a>
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
@@ -7,60 +6,72 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="./img/the-ethernaut.svg" alt="Logo Rather Labs" width="754" height="109">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel2.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Solutions</h3>
+  <h1 align="center">Fal1out[SOLUTION]</h3>
 
   <p align="center">
-    I'm Piña🍍, a pleasure to greet you, here you can found one of the solution for this CTF, I hope you enjoy!
+    🍍Hi  here you can found one of the solution for the first challenge Fal1out!
   </p>
 </div>
 
-## About the Ethernaut 
-
-The Ethernaut is a Web3/Solidity based wargame inspired by overthewire.org, played in the Ethereum Virtual Machine.  
-
-
 ## Challenge
-Each level is a smart contract that needs to be 'hacked'.
+* Claim ownership of the contract below to complete this level.
 
+> Solution: [tx](https://goerli.etherscan.io/address/)
 
-## What will you find here?
-
-This section will be to discover various aspects that each challenge includes so that you can complete it on your own.
-
-You could call it as a complement to these challenges, although I will present the solution, it is not to go immediately for the solution, it is to explain what terms and concepts are involved, go deeper and understand what we are doing.
-
-This will be the dynamic for each challenge:
-
-- Complementary information to solve the challenge
-- Extra help
-- Solution explained
-
-> Remember, this is just one way to solve it, there are many ways, feel comfortable and do it the way you think is right, make mistakes, try, but never give up.
-
-## Table of Contents
-
-0. <summary><a href="https://github.com/pinalikefruit/ethernaut/tree/00-hello-ethernaut"> Hello Ethernaut</a></summary>
-1. <summary><a href="https://github.com/pinalikefruit/ethernaut/tree/01-fallback/fallback"> Fallback</a></summary>
+## Complementary information to solve the challenge
 
 
 
+## Extra help
 
-### Built With
+# Getting Started
 
- <p align="left">
- <img src="https://img.shields.io/badge/Solidity-%23363636.svg?style=for-the-badge&logo=solidity&logoColor=white" alt="Solidity">
- <img src="https://img.shields.io/badge/typescript%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white" alt="Typescript"/>
- <img src="https://img.shields.io/badge/javascript-fff04d?&style=for-the-badge&logo=javascript&logoColor=black" alt="javascript"/>
- <img src="https://img.shields.io/badge/Ethers.js-7A98FB?style=for-the-badge&logo=Ethers.js&logoColor=white" alt="Ethers.js">
- <img src="https://img.shields.io/badge/Hardhat-fff04d?style=for-the-badge&logo=Hardhat&logoColor=white" alt="Hardhat">
- <img src="https://img.shields.io/badge/Mocha-8c6749?style=for-the-badge&logo=Mocha&logoColor=white" alt="Mocha">
- <img src="https://img.shields.io/badge/Chai-f6e8c9?style=for-the-badge&logo=Chai&logoColor=a40802" alt="Chai">
- <img src="https://img.shields.io/badge/OpenZeppelin-65aef8?&style=for-the-badge&logo=OpenZeppelin&logoColor=white" alt="OpenZeppelin"/>
-</p>
+## Requirements
 
+- [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+  - You'll know you did it right if you can run `git --version` and you see a response like `git version x.x.x`
+- [Nodejs](https://nodejs.org/en/)
+  - You'll know you've installed nodejs right if you can run:
+    - `node --version` and get an ouput like: `vx.x.x`
+- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/) instead of `npm`
+  - You'll know you've installed yarn right if you can run:
+    - `yarn --version` and get an output like: `x.x.x`
+    - You might need to install it with npm
+
+## Setup
+
+Clone this repo
+
+```
+git clone https://github.com/pinalikefruit/ethernaut
+cd ethernaut
+git checkout fal1out/
+```
+
+Then install dependencies
+
+```
+yarn
+```
+## Solution explained
+
+
+### Run test 
+ - `yarn test` for local testing 
+ - `yarn test:staging` for goerli network, just change the contract address in `helper-hardhat-config.ts`
+
+ 
+
+> You can see all code explain
+
+### Solution interacting with the console
+
+
+
+[goerli etherscan](https://goerli.etherscan.io/) and enter the address of the contract, you will see the creation transactions, the sending of ether that you have made and how you have emptied it.
 
 ## License
 
@@ -76,8 +87,6 @@ Github profile: [https://github.com/pinalikefruit](https://github.com/pinalikefr
 
 
 
-<!-- ## Acknowledgments
-Thank you for this opportunity, a lot of effort, dedication, mistakes, try again, but without a doubt a great increase in my development skills, excellent challenge, really enjoyed it, see you soon. -->
 
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
