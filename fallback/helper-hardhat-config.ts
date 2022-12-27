@@ -1,5 +1,6 @@
 export interface networkConfigItem {
     name?: string
+    contractAddress?:string
 
   }
   
@@ -15,6 +16,7 @@ export const networkConfig: networkConfigInfo = {
     
     5: {
         name: "goerli",
+        contractAddress: "<INSERT_CONTRACT_ADDRESS>"
         
     },
     1: {
@@ -23,4 +25,4 @@ export const networkConfig: networkConfigInfo = {
 }
 
 export const developmentChains = ["hardhat", "localhost"]
-export const VERIFICATION_BLOCK_CONFIRMATIONS = 6
+

@@ -13,7 +13,7 @@ const deployFallback: DeployFunction = async function(
     const { deployments, getNamedAccounts, network} = hre
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
-
+    const args: any[] = []
     const waitBlockConfirmations = developmentChains.includes(network.name)
         ? 1
         : VERIFICATION_BLOCK_CONFIRMATIONS

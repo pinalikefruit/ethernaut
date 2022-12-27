@@ -1,108 +1,85 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
-
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
-
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://ethernaut.openzeppelin.com/">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel1.svg" alt="" width="800" height="485">
   </a>
 
-  <h3 align="center">PROJECT NAME</h3>
+  <h1 align="center">Fallback [SOLUTION]</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://">View Demo</a>
-    ·
-    <a href="https://">Report Bug</a>
-    ·
-    <a href="https://">Request Feature</a>
+    🍍Hi  here you can found one of the solution for the first challenge Fallback!
   </p>
 </div>
 
+## Challenge
+You will beat this level if
 
+* You claim ownership of the contract
+* You reduce its balance to 0
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#requirements">Requirements</a></li>
-        <li><a href="#quickstart">Quickstart</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+> Solution: [tx](https://goerli.etherscan.io/address/0x2672521E93f500F83c60d69bFA03EB1638d73333)
 
+## Complementary information to solve the challenge
 
+- How to send ether interacting with the ABI of a contract
+    
+    We know this from the previous challenge, and we commented that in the ABI we can see each of the functions, but the function is missing a modifier called `payable` so that it can receive ether from the function.
+    
+    We can now recognize which function we can use to send ether.
+    
+    _Sending a non-zero amount of ether to a non-payable function will throw an exception. Do not do it._
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+- How to send ether without using the ABI
+    
+     If a contract does not have the `payable` keyword in any function, it will not be able to receive ether.
+    
+     That's what the function is for.
+    
+     ```solidity
+     receive() external payable {}
+     ```
+    
+     It means that without using the payable function, we can also directly send ether to the contract and receive it.
 
+- How to convert between wei/ether
+    
+     You already know this from the previous section, we saw that displaying the help() command in the console we see the table.
+    
+     At the end we have `fromWei(wei)` and `toWei(ether)` , and how does this help us?
+    
+     In solidity we cannot handle decimals, so we handle decimals in integers and that is why we do the conversion, 1 ether is equivalent to 100000000000000000000 wei, so, to keep things simple, we have these two native functions to work with amounts.
+    
+- Fallback methods
+    
+     Fallback is a function that takes no arguments and returns nothing.
+    
+     It is executed when a non-existent function is called or Ether is sent directly to a contract, sounds familiar?
+    
+     Yes, this is what we already saw
+    
+     ```solidity
+     receive() external payable {}
+     ```
+    
+     It does not receive anything and does not return anything, but it is executed when we send ether to the contract.
+    
+     With this it seems to me dear friend that you are ready to start the challenge!
+    
+     I trust you, you can do it!
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+## Extra help
+We learned how to send in a function with its argument, but how do you send money to a payable function like `contribute()` if it has no parameters?
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+How do I use the `receive()` function to send ether? `await contract.receive(##)` ?
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+I leave these doubts for you to think and investigate, and tell me what you find.
 
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-
- <p align="left">
- <img src="https://img.shields.io/badge/Solidity-%23363636.svg?style=for-the-badge&logo=solidity&logoColor=white" alt="Solidity">
- <img src="https://img.shields.io/badge/typescript%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white" alt="Typescript"/>
- <img src="https://img.shields.io/badge/Ethers.js-7A98FB?style=for-the-badge&logo=Ethers.js&logoColor=white" alt="Ethers.js">
- <img src="https://img.shields.io/badge/Hardhat-fff04d?style=for-the-badge&logo=Hardhat&logoColor=white" alt="Hardhat">
- <img src="https://img.shields.io/badge/Mocha-8c6749?style=for-the-badge&logo=Mocha&logoColor=white" alt="Mocha">
- <img src="https://img.shields.io/badge/Chai-f6e8c9?style=for-the-badge&logo=Chai&logoColor=a40802" alt="Chai">
- <img src="https://img.shields.io/badge/OpenZeppelin-65aef8?&style=for-the-badge&logo=OpenZeppelin&logoColor=white" alt="OpenZeppelin"/>
-</p>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
+# Getting Started
 
 ## Requirements
 
@@ -111,118 +88,79 @@ To get a local copy up and running follow these simple example steps.
 - [Nodejs](https://nodejs.org/en/)
   - You'll know you've installed nodejs right if you can run:
     - `node --version` and get an ouput like: `vx.x.x`
-- [Yarn](https://yarnpkg.com/getting-started/install) instead of `npm`
+- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/) instead of `npm`
   - You'll know you've installed yarn right if you can run:
     - `yarn --version` and get an output like: `x.x.x`
-    - You might need to [install it with `npm`](https://classic.yarnpkg.com/lang/en/docs/install/) or `corepack`
+    - You might need to install it with npm
 
-## Quickstart
+## Setup
+
+Clone this repo
 
 ```
-git clone https://github.com/
-cd 
+git clone https://github.com/pinalikefruit/ethernaut
+cd ethernaut
+git checkout fallback
+```
+
+Then install dependencies
+
+```
 yarn
 ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+## Solution explained
 
 
-<!-- USAGE EXAMPLES -->
-## Usage
+### Run test 
+ - `yarn test` for local testing 
+ - `yarn test:staging` for goerli network, just change the contract address in `helper-hardhat-config.ts`
 
-Deploy:
+ 
 
-```
-yarn deploy
-```
+> You can see all code explain
 
-## Testing
-
-```
-yarn test
-```
-
-### Test Coverage
-
-```
-yarn coverage
-```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Solution interacting with the console
 
 
+Then, queries that you have the owner to then make the withdrawal with `withdraw()`
 
-<!-- ROADMAP -->
-## Roadmap
+The code would be the following:
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
+1. :`await contract.contribute({value: 1})`
 
+Here we send an amount less than 1 wei, and so we go to the list of contributors ooohhh yay.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+2. : `await sendTransaction({from: "YOUR_PUBLIC_KEY", to: "CONTRACT_ADDRESS", value: 1})`
 
+We send any amount greater than 0, and as in the previous transaction we are already part of the `contributions` list, we approve this conditional. And the next statement is that we are now the `owner`
 
+3. `await contract.owner()`
 
-<!-- CONTRIBUTING -->
-## Contributing
+We check that the address it returns is ours.
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+4. `await contract.withdraw()`
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+And come on, we reduce the account to 0, approving the second point.
 
-1. Fork the Project
-2. Create your Feature Branch 
-3. Commit your Changes 
-4. Push to the Branch 
-5. Open a Pull Request
+If you want to check all these movements you can use
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+[goerli etherscan](https://goerli.etherscan.io/) and enter the address of the contract, you will see the creation transactions, the sending of ether that you have made and how you have emptied it.
 
-
-
-<!-- LICENSE -->
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- CONTACT -->
 ## Contact
 
 Piña - [@pinalikefruit](https://twitter.com/pinalikefruit) - josepina@pinalikefruit.com
 
 Github profile: [https://github.com/pinalikefruit](https://github.com/pinalikefruit)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: http://www.wtfpl.net/txt/copying/
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/pinalikefruit
-
