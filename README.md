@@ -9,7 +9,7 @@
     <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel2.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Fal1out[SOLUTION]</h3>
+  <h1 align="center">Fal1out [SOLUTION]</h3>
 
   <p align="center">
     🍍Hi  here you can found one of the solution for the first challenge Fal1out!
@@ -19,13 +19,29 @@
 ## Challenge
 * Claim ownership of the contract below to complete this level.
 
-> Solution: [tx](https://goerli.etherscan.io/address/)
+> Solution: [tx](https://goerli.etherscan.io/address/0x77e443e2a13DE32EAE246f2253dCDB67b1728A3c)
 
 ## Complementary information to solve the challenge
+- Solidity Remix IDE
 
+If you don't know Solidity Remix, it is an environment where you can deploy your contracts in an easy way, this is the site [https://remix.ethereum.org/](https://remix.ethereum.org/).
+
+What could you help us for?
+
+Apart from creating contracts and deploying them, you can also instantiate one already created and thus interact with it in a very easy way.
 
 
 ## Extra help
+Don't know how to instantiate it?
+
+1. Create a file for the contract
+2. Compile it (probably change the version to 0.6.0)
+3. Instead of deploying it, place the address of the contract that the openzeppelin console gave you when you instantiated the contract
+4. Make sure you are in Goerli
+
+What will help you is that you will be able to visualize the functions of the contract easily, you can see who the owner belongs to and interact with the functions with just one click.
+
+Here you can do all the interactions we've done so far, call a function, send ether, call `owner()`.
 
 # Getting Started
 
@@ -57,9 +73,15 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
+We see that the assignment of the owner is done through the constructor method, where previously it was agreed to call the contract the same, but in this case there is an error and they are not the same, so when the contract is displayed there is no owner. and even if the owner takes over, then it can be easily changed, since it is public and does not have a modifier.
 
+Smart contracts are very safe, right?
 
-### Run test 
+So to get the property we just have to send any amount of ether to the `fal1out()` function, you can send 1 wei.
+
+In the previous challenge we saw how to send ether but they recommend using remix, so I propose two options to solve it.
+
+### Run test [automated solution]
  - `yarn test` for local testing 
  - `yarn test:staging` for goerli network, just change the contract address in `helper-hardhat-config.ts`
 
@@ -67,7 +89,26 @@ yarn
 
 > You can see all code explain
 
-### Solution interacting with the console
+### Solution interanting with the console
+    
+  1. Send ether through the console
+    
+     ```solidity
+     await contract.Fal1out({value: toWei("0.000000001")})
+     ```
+    
+  2. If you check, you already have ownership
+    
+     ```solidity
+     await contract.owner()
+     ```
+    
+  3. You can give it to check instance
+
+### Solution interacting with remix
+* Send ether using remix 
+* Check that the owner has changed 
+* You can go back to the ethernaut page and click check instance
 
 
 
