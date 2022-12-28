@@ -45,6 +45,7 @@ This will be the dynamic for each challenge:
 0. <a href="https://github.com/pinalikefruit/ethernaut/tree/00-hello-ethernaut"> Hello Ethernaut</a>
 1. <a href="https://github.com/pinalikefruit/ethernaut/tree/01-fallback/fallback"> Fallback</a>
 2. <a href="https://github.com/pinalikefruit/ethernaut/tree/02-fal1out"> Fallout</a>
+3. <a href="https://github.com/pinalikefruit/ethernaut/tree/03-coin-flip"> Coin Flip </a>
 
 
 
