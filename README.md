@@ -6,42 +6,28 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel2.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel3.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Fal1out [SOLUTION]</h3>
+  <h1 align="center">Coin Flip [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the first challenge Fal1out!
+    🍍Hi  here you can found one of the solution for the challenge Coin Flip !
   </p>
 </div>
 
 ## Challenge
-* Claim ownership of the contract below to complete this level.
+* This is a coin flipping game where you need to build up your winning streak by guessing the outcome of a coin flip. To complete this level you'll need to use your psychic abilities to guess the correct outcome 10 times in a row.
 
 > Solution: [tx](https://goerli.etherscan.io/address/0x77e443e2a13DE32EAE246f2253dCDB67b1728A3c)
 
 ## Complementary information to solve the challenge
-- Solidity Remix IDE
+- See the Help page above, section "Beyond the console"
 
-If you don't know Solidity Remix, it is an environment where you can deploy your contracts in an easy way, this is the site [https://remix.ethereum.org/](https://remix.ethereum.org/).
 
-What could you help us for?
-
-Apart from creating contracts and deploying them, you can also instantiate one already created and thus interact with it in a very easy way.
 
 
 ## Extra help
-Don't know how to instantiate it?
-
-1. Create a file for the contract
-2. Compile it (probably change the version to 0.6.0)
-3. Instead of deploying it, place the address of the contract that the openzeppelin console gave you when you instantiated the contract
-4. Make sure you are in Goerli
-
-What will help you is that you will be able to visualize the functions of the contract easily, you can see who the owner belongs to and interact with the functions with just one click.
-
-Here you can do all the interactions we've done so far, call a function, send ether, call `owner()`.
 
 # Getting Started
 
