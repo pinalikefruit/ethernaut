@@ -19,15 +19,17 @@
 ## Challenge
 * This is a coin flipping game where you need to build up your winning streak by guessing the outcome of a coin flip. To complete this level you'll need to use your psychic abilities to guess the correct outcome 10 times in a row.
 
-> Solution: [tx](https://goerli.etherscan.io/address/0x77e443e2a13DE32EAE246f2253dCDB67b1728A3c)
+> Solution: 
+  [Coin Flip Contract](https://goerli.etherscan.io/address/0x22e324426b9c70a56eaF4a326a8f4ac7578Bc6E1#internaltx)
+  [Attack Contract](https://goerli.etherscan.io/address/0xd2fa1fe9e943c4f27bec45de24d52d9db9e7ce94)
 
 ## Complementary information to solve the challenge
 - See the Help page above, section "Beyond the console"
 
 
+<!-- 
 
-
-## Extra help
+## Extra help -->
 
 # Getting Started
 
@@ -50,7 +52,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout fal1out/
+git checkout 03-coinflip
 ```
 
 Then install dependencies
@@ -58,43 +60,17 @@ Then install dependencies
 ```
 yarn
 ```
-## Solution explained
-We see that the assignment of the owner is done through the constructor method, where previously it was agreed to call the contract the same, but in this case there is an error and they are not the same, so when the contract is displayed there is no owner. and even if the owner takes over, then it can be easily changed, since it is public and does not have a modifier.
+<!-- ## Solution explained -->
 
-Smart contracts are very safe, right?
-
-So to get the property we just have to send any amount of ether to the `fal1out()` function, you can send 1 wei.
-
-In the previous challenge we saw how to send ether but they recommend using remix, so I propose two options to solve it.
 
 ### Run test [automated solution]
  - `yarn test` for local testing 
- - `yarn test:staging` for goerli network, just change the contract address in `helper-hardhat-config.ts`
+ - `yarn deploy --network goerli` remember change address in `helper-hardhat-config.ts`
+ - `yarn test-staging` for goerli network, just change the contract address in `helper-hardhat-config.ts`
 
- 
 
 > You can see all code explain
 
-### Solution interanting with the console
-    
-  1. Send ether through the console
-    
-     ```solidity
-     await contract.Fal1out({value: toWei("0.000000001")})
-     ```
-    
-  2. If you check, you already have ownership
-    
-     ```solidity
-     await contract.owner()
-     ```
-    
-  3. You can give it to check instance
-
-### Solution interacting with remix
-* Send ether using remix 
-* Check that the owner has changed 
-* You can go back to the ethernaut page and click check instance
 
 
 

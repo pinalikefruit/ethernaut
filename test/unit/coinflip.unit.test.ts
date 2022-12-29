@@ -1,20 +1,17 @@
 import { developmentChains } from "../../helper-hardhat-config"
-import { network, ethers, deployments, waffle } from "hardhat"
+import { network, ethers, deployments } from "hardhat"
 import { CoinFlip, Attack } from "../../typechain-types"
 import { assert } from "chai"
-import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers"
+
 
 !developmentChains.includes(network.name)
     ? describe.skip
     : describe("Fallback Hacked", function() {
         let coinflip: CoinFlip
         let attack: Attack
-        let accounts: SignerWithAddress[]
-        let deployer: SignerWithAddress
-
+        
         beforeEach(async() => {
-            accounts = await ethers.getSigners()
-            deployer = accounts[0]
+            
             await deployments.fixture("all")
             coinflip = await ethers.getContract("CoinFlip")
             attack = await ethers.getContract("Attack")

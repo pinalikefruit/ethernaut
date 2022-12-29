@@ -14,16 +14,17 @@ const deployAttack: DeployFunction = async function(
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
 
-    let chainId = network.config.chainId
+    
     let addressCoinFlip:string
     
-    if(chainId == 31337) {
+    if(developmentChains.includes(network.name)) {
         const CoinFlip = await deployments.get("CoinFlip")
         addressCoinFlip = CoinFlip.address
     } else {
         addressCoinFlip = networkConfig[network.config.chainId!]["contractAddress"]!
     }
-     
+    log("----------------------------------------------------")
+  log("Deploying Attack and waiting for confirmations...") 
     const args: any[] = [addressCoinFlip]
     const waitBlockConfirmations = developmentChains.includes(network.name)
         ? 1

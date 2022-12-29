@@ -16,7 +16,7 @@ export const networkConfig: networkConfigInfo = {
     
     5: {
         name: "goerli",
-        contractAddress: "0x2a232e97219Daa59b3c296C18E7563d95d2EA68D"
+        contractAddress: "<ADDRESS_COIN_FLIP>"
         
     },
     1: {
