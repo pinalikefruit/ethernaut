@@ -16,16 +16,16 @@ const deployCoinFlip: DeployFunction = async function(
     log('-------------------------------------------------------')
     
     if(developmentChains.includes(network.name)){
-        log("Local network detected! Deploying Coinflip...")
-        await deploy("CoinFlip",{
-            contract: "CoinFlip",
+        log("Local network detected! Deploying Telephone...")
+        await deploy("Telephone",{
+            contract: "Telephone",
             from: deployer,
             args:[],
             log:true,
         })
-        log("Coinflip deployed!")
+        log("Telephone deployed!")
     }
 }
 
 export default deployCoinFlip
-deployCoinFlip.tags = ["all","coinflip"]
+deployCoinFlip.tags = ["all","telephone"]

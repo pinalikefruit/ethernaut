@@ -13,19 +13,19 @@ const deployAttack: DeployFunction = async function(
     const { deployments, getNamedAccounts, network} = hre
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
-
     
-    let addressCoinFlip:string
+    
+    let addressTelephone:string
     
     if(developmentChains.includes(network.name)) {
-        const CoinFlip = await deployments.get("CoinFlip")
-        addressCoinFlip = CoinFlip.address
+        const Telephone = await deployments.get("Telephone")
+        addressTelephone = Telephone.address
     } else {
-        addressCoinFlip = networkConfig[network.config.chainId!]["contractAddress"]!
+        addressTelephone = networkConfig[network.config.chainId!]["contractAddress"]!
     }
     log("----------------------------------------------------")
   log("Deploying Attack and waiting for confirmations...") 
-    const args: any[] = [addressCoinFlip]
+    const args: any[] = [addressTelephone]
     const waitBlockConfirmations = developmentChains.includes(network.name)
         ? 1
         : VERIFICATION_BLOCK_CONFIRMATIONS

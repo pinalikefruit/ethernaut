@@ -1,10 +1,11 @@
 {
-    "name": "Coinflip",
+    "name": "Telephone",
     "version": "1.0.0",
-    "description": "This is a coin flipping game where you need to build up your winning streak by guessing the outcome of a coin flip. To complete this level you'll need to use your psychic abilities to guess the correct outcome 10 times in a row.",
+    "description": "Claiming the property, we already know what it is about, only that another way must be applied.",
     "scripts": {
         "compile": "yarn hardhat compile",
         "deploy": "yarn hardhat deploy",
+        "deploy-testnet": "yarn deploy --network goerli",
         "test": "yarn hardhat test",
         "test-staging": "yarn hardhat test --network goerli",
         "lint": "yarn solhint 'contracts/*.sol'",
