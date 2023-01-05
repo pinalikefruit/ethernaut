@@ -12,7 +12,7 @@ const deployAttack: DeployFunction = async function(
 ){
     const { deployments, getNamedAccounts, network} = hre
     const { deploy, log } = deployments
-    const { deployer } = await getNamedAccounts()
+    const {  hacker } = await getNamedAccounts()
     
     
     let addressTelephone:string
@@ -31,7 +31,7 @@ const deployAttack: DeployFunction = async function(
         : VERIFICATION_BLOCK_CONFIRMATIONS
     log('-------------------------------------------------------')
     const attack = await deploy("Attack",{
-        from: deployer,
+        from: hacker,
         args:args,
         log:true,
         waitConfirmations: waitBlockConfirmations
