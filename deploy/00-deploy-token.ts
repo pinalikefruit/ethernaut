@@ -8,7 +8,7 @@ const deployToken: DeployFunction = async function(
     const { deployments, getNamedAccounts, network } = hre
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
-    const args = ["1"]
+    const args = ["21000000"]
     
     log('---------------------------------------------------')
     

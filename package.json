@@ -5,9 +5,9 @@
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",
-    "deploy-goerli": "yarn hardhat deploy --network goerli",
-    "unit-test": "yarn hardhat test",
-    "staging-test": "yarn hardhat test --network goerli",
+    "deploy:testnet": "yarn hardhat deploy --network goerli",
+    "test:unit": "yarn hardhat test",
+    "test:staging": "yarn hardhat test --network goerli",
     "lint": "yarn solhint 'contracts/**/*.sol' --fix",
     "lint:fix": "yarn solhint 'contracts/**/*.sol' --fix",
     "format": "yarn prettier --write",
