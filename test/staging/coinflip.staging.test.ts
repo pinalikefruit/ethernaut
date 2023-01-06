@@ -34,7 +34,7 @@ developmentChains.includes(network.name)
                     let consecutives:number;
                     
                     const tx = await attack.start({gasLimit: 100000,  gasPrice: ethers.utils.parseUnits("10.0", "gwei")})
-                    tx.wait(1)
+                    await provider.waitForTransaction(tx.hash)
                     
                     consecutives = (await attack.wins()).toNumber()  + 1
                     console.log("Consecutives",consecutives)
