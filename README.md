@@ -19,7 +19,7 @@
 ## Challenge
 * You are given 20 tokens to start with and you will beat the level if you somehow manage to get your hands on any additional tokens. Preferably a very large amount of tokens.
 > Solution: 
-  [Telephone Contract](https://goerli.etherscan.io/address/0xac314f384538e00ab2aa590bb80ef4d55c385dae#internaltx)
+  [Token Contract](https://goerli.etherscan.io/address/0xac314f384538e00ab2aa590bb80ef4d55c385dae#internaltx)
   [Attack Contract](https://goerli.etherscan.io/address/0x46565Cb842d375D05218E40Bcf71805A8e120b5d#code)
 
 ## Complementary information to solve the challenge
@@ -66,7 +66,7 @@ yarn
 1. Create a attack smart contract
 2. Use a interface of Token for interactive with token contract.
 3. Overflows are very common in solidity and must be checked, so here is the exploit 
-4. You can find all of the solutions in the attack() function in the Attack.sol file. 
+4. You can find all of the solutions in the `attack()` function in the `Attack.sol` file. 
 
 ### Run test [automated solution]
  - `yarn test:unit` for local testing 
