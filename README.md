@@ -26,10 +26,14 @@
 ## Complementary information to solve the challenge
 - See the Help page above, section "Beyond the console"
 
+You already know what they talking about.
 
-<!-- 
+## Extra help
+If you look at the code, we see two local functions: 
+* `blockhash(uint blockNumber) returns (bytes32)` : hash of the given block when blocknumber is one of the 256 most recent blocks; otherwise returns zero
+* `block.number (uint)` : current block number.
 
-## Extra help -->
+These function you can get the value, use it. 
 
 # Getting Started
 
@@ -60,7 +64,11 @@ Then install dependencies
 ```
 yarn
 ```
-<!-- ## Solution explained -->
+## Solution explained
+
+First, do not rely on block.timestamp or blockhash as a source of randomness, unless you know what you are doing.
+
+In the blockchain not exist randomn number, for get random number you need an external provider, but in this case, you can predict the value, practical apply mirrow strategic, you can active your function and send the result for the block.
 
 
 ### Run test [automated solution]
