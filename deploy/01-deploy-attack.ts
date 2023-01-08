@@ -1,32 +1,32 @@
 import { DeployFunction} from "hardhat-deploy/types"
-import { HardhatRuntimeEnvironment } from "hardhat/types"
+import { HardhatRuntimeEnvironment} from "hardhat/types"
 import { developmentChains ,VERIFICATION_BLOCK_CONFIRMATIONS, networkConfig } from "../helper-hardhat-config"
 import verify from "../utils/verify"
 
 const deployAttack: DeployFunction = async function(
     hre: HardhatRuntimeEnvironment
 ){
-    const { deployments, getNamedAccounts, network} = hre
+    const { deployments, getNamedAccounts, network, ethers} = hre
     const { deploy, log } = deployments
     const { hacker } = await getNamedAccounts()
 
-    let addressToken:string 
+    let addressDelegation:string 
 
     if(developmentChains.includes(network.name)){
-        const Token = await deployments.get("Token")
-        addressToken = Token.address
+        const Delegation = await ethers.getContract("Delegation")
+        addressDelegation = Delegation.address
     } else {
-        addressToken = networkConfig[network.config.chainId!]["contractAddress"]!
+        addressDelegation = networkConfig[network.config.chainId!]["contractAddress"]!
     }
 
     log("--------------------------------------")
     log("Deploying Attack and waiting for confirmations...")
-    const args: string[] = [addressToken]
+    const args: string[] = [addressDelegation]
     const waitBlockConfirmations = developmentChains.includes(network.name)
         ? 1
         : VERIFICATION_BLOCK_CONFIRMATIONS
     log("---------------------------------------")
-    const attack = await deploy("Attack", {
+    const attack = await deploy("Hack", {
         from : hacker,
         args: args,
         log: true,

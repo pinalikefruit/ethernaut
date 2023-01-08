@@ -6,32 +6,36 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel5.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel6.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Token [SOLUTION]</h3>
+  <h1 align="center">Delegation [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Token !
+    🍍Hi  here you can found one of the solution for the challenge Delegation !
   </p>
 </div>
 
 ## Challenge
-* You are given 20 tokens to start with and you will beat the level if you somehow manage to get your hands on any additional tokens. Preferably a very large amount of tokens.
+* The goal of this level is for you to claim ownership of the instance you are given.
+
 > Solution: 
-  [Telephone Contract](https://goerli.etherscan.io/address/0xac314f384538e00ab2aa590bb80ef4d55c385dae#internaltx)
-  [Attack Contract](https://goerli.etherscan.io/address/0x46565Cb842d375D05218E40Bcf71805A8e120b5d#code)
+  [Delegation Contract](https://goerli.etherscan.io/address/0x4d94F9efFb9A63738D61b13E07bCFf45F3cae7ed#internaltx)
+  [Hack Contract](https://goerli.etherscan.io/address/0xdcdD7e83df672E56007022D3B7BD1f56a70e7248#internaltx)
 
 ## Complementary information to solve the challenge
   Things that might help:
 
-* What is an odometer?
-
-Why do they ask us about the odometer? Well, when you use a car, you see the odometer, and when it reaches its maximum capacity (e.g. 9999), it starts again at (e.g.) 0000. Maybe this example can help you.
+* Look into Solidity's documentation on the delegatecall low level function, how it works, how it can be used to delegate operations to on-chain libraries, and what implications it has on execution scope.
+* Fallback methods
+* Method ids
 
 
 ## Extra help
-Read about the SafeMath library at OpenZeppelin.
+Here you can find the documentation for each one.
+* [Delegatecall Solidity](https://docs.soliditylang.org/en/v0.8.17/introduction-to-smart-contracts.html?highlight=delegatecall#delegatecall-and-libraries)
+* [Fallback methods](https://docs.soliditylang.org/en/v0.8.17/contracts.html?#fallback-function)
+* [Method ids](https://docs.ethers.org/v5/api/utils/hashing/#utils-id)
 
 # Getting Started
 
@@ -54,7 +58,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 05-token
+git checkout 06-delegation
 ```
 
 Then install dependencies
@@ -63,11 +67,13 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-1. Create a attack smart contract
-2. Use a interface of Token for interactive with token contract.
-3. Overflows are very common in solidity and must be checked, so here is the exploit 
-4. You can find all of the solutions in the attack() function in the Attack.sol file. 
-
+I explain it in three different ways:
+* <b>1. SOLUTION</b> 
+You can copy/paste the code in remix and click the `pwd()` function, just edit gasLimit in your metamask with about 300,000.
+* <b>2. SOLUTION</b> 
+ You can run `test:unit` and see how you can change the property using the calling function and with a smart contract.
+* <b>3. SOLUTION</b>
+You can run `test:staging` and see how it can take ownership of sending a transaction, the additional in this case is that you need to create a msg.data, for this reason it uses an ethers.js id method.
 ### Run test [automated solution]
  - `yarn test:unit` for local testing 
  - `yarn deploy:testnet` remember change address in `helper-hardhat-config.ts`
@@ -78,7 +84,8 @@ yarn
 
 ### Preventative Techniques
 
-Use Openzeppelin SafeMath library
+> Use stateless Library
+The delegatecall function is a powerful feature, but a dangerous one, and must be used with extreme care.
 
 ## License
 

