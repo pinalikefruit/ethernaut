@@ -6,33 +6,29 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel7.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel8.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Force [SOLUTION]</h3>
+  <h1 align="center">Vault [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Force !
+    🍍Hi  here you can found one of the solution for the challenge Vault !
   </p>
 </div>
 
 ## Challenge
-* The goal of this level is to make the balance of the contract greater than zero.
+* Unlock the vault to pass the level!
 
 > Solution: 
-  [Force Contract](https://goerli.etherscan.io/address/0x49dC44491E99D9F272152CA9cbE433D1c7D9639E#internaltx) ||
-  [Hack Contract](https://goerli.etherscan.io/address/0x62708240dfcb966BBC37C495C0F6759337c84dAd)
+  [Vault Contract](https://goerli.etherscan.io/address/0x86B408fD97E4BFc8e9c91aC7cd3d39c9d9505964)
 
 ## Complementary information to solve the challenge
-  Things that might help:
-
-* Fallback methods
-* Sometimes the best way to attack a contract is with another contract.
-* See the Help page above, section "Beyond the console"
+You can do it.
 
 
 ## Extra help
-Well, about the complementary information, here in the last challenge we are talk about a lot. So, extra help is looking for `selfdestruct()` function. 
+It's important to remember that marking a variable as private only prevents other contracts from accessing it. State variables marked as private and local variables are still publicly accessible.
+Information about [private storage](https://docs.soliditylang.org/en/v0.8.17/security-considerations.html?highlight=private%20store#private-information-and-randomness)
 
 # Getting Started
 
@@ -55,7 +51,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 07-force
+git checkout 08-vault
 ```
 
 Then install dependencies
@@ -64,9 +60,9 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-`selfdestruct()` is an interesting topic, because you can use it to push ether force, even your contract has no fallback function, also if you push the rollback function it doesn't work.
 
-So the solution is to insert a `self-destruct()` in your attack function and pass as argument the address you want to attack.
+How is it not possible to access a smart contract, You can use a `ethers.js` library and apply this method [getContractAt] (https://docs.ethers.org/v5/api/providers/provider/#Provider-getStorageAt), you can see all the code in `test/ staging/vault.staging.test.ts`
+
 ### Run test [automated solution]
  - `yarn test:unit` for local testing 
  - `yarn deploy:testnet` remember change address in `helper-hardhat-config.ts`
@@ -77,7 +73,7 @@ So the solution is to insert a `self-destruct()` in your attack function and pas
 
 ### Preventative Techniques
 
-> It is important not to count on the invariant address(this).balance == 0 for any contract logic.
+> Dont push any relevant or secret information in your smart contract.
 
 ## License
 

@@ -1,7 +1,7 @@
 {
-  "name": "force",
+  "name": "vault",
   "version": "1.0.0",
-  "description": "The goal of this level is to make the balance of the contract greater than zero.",
+  "description": "Unlock the vault to pass the level!",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",
