@@ -10,27 +10,29 @@ const deployAttack: DeployFunction = async function(
     const { deploy, log } = deployments
     const { hacker } = await getNamedAccounts()
 
-    let addressDelegation:string 
+    let addressContract:string 
 
     if(developmentChains.includes(network.name)){
-        const Delegation = await ethers.getContract("Delegation")
-        addressDelegation = Delegation.address
+        const Delegation = await ethers.getContract("Force")
+        addressContract = Delegation.address
     } else {
-        addressDelegation = networkConfig[network.config.chainId!]["contractAddress"]!
+        addressContract = networkConfig[network.config.chainId!]["contractAddress"]!
     }
 
     log("--------------------------------------")
     log("Deploying Attack and waiting for confirmations...")
-    const args: string[] = [addressDelegation]
+    const args: string[] = []
     const waitBlockConfirmations = developmentChains.includes(network.name)
         ? 1
         : VERIFICATION_BLOCK_CONFIRMATIONS
     log("---------------------------------------")
-    const attack = await deploy("Hack", {
+    const attack = await deploy("Attack", {
         from : hacker,
         args: args,
         log: true,
-        waitConfirmations: waitBlockConfirmations
+        waitConfirmations: waitBlockConfirmations,
+        value: "1"
+
     })
     
     if(!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY){

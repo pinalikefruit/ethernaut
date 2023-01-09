@@ -6,36 +6,33 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel6.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel7.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Delegation [SOLUTION]</h3>
+  <h1 align="center">Force [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Delegation !
+    🍍Hi  here you can found one of the solution for the challenge Force !
   </p>
 </div>
 
 ## Challenge
-* The goal of this level is for you to claim ownership of the instance you are given.
+* The goal of this level is to make the balance of the contract greater than zero.
 
 > Solution: 
-  [Delegation Contract](https://goerli.etherscan.io/address/0x4d94F9efFb9A63738D61b13E07bCFf45F3cae7ed#internaltx)
-  [Hack Contract](https://goerli.etherscan.io/address/0xdcdD7e83df672E56007022D3B7BD1f56a70e7248#internaltx)
+  [Force Contract](https://goerli.etherscan.io/address/0x49dC44491E99D9F272152CA9cbE433D1c7D9639E#internaltx) ||
+  [Hack Contract](https://goerli.etherscan.io/address/0x62708240dfcb966BBC37C495C0F6759337c84dAd)
 
 ## Complementary information to solve the challenge
   Things that might help:
 
-* Look into Solidity's documentation on the delegatecall low level function, how it works, how it can be used to delegate operations to on-chain libraries, and what implications it has on execution scope.
 * Fallback methods
-* Method ids
+* Sometimes the best way to attack a contract is with another contract.
+* See the Help page above, section "Beyond the console"
 
 
 ## Extra help
-Here you can find the documentation for each one.
-* [Delegatecall Solidity](https://docs.soliditylang.org/en/v0.8.17/introduction-to-smart-contracts.html?highlight=delegatecall#delegatecall-and-libraries)
-* [Fallback methods](https://docs.soliditylang.org/en/v0.8.17/contracts.html?#fallback-function)
-* [Method ids](https://docs.ethers.org/v5/api/utils/hashing/#utils-id)
+Well, about the complementary information, here in the last challenge we are talk about a lot. So, extra help is looking for `selfdestruct()` function. 
 
 # Getting Started
 
@@ -58,7 +55,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 06-delegation
+git checkout 07-force
 ```
 
 Then install dependencies
@@ -67,13 +64,9 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-I explain it in three different ways:
-* <b>1. SOLUTION</b> 
-You can copy/paste the code in remix and click the `pwd()` function, just edit gasLimit in your metamask with about 300,000.
-* <b>2. SOLUTION</b> 
- You can run `test:unit` and see how you can change the property using the calling function and with a smart contract.
-* <b>3. SOLUTION</b>
-You can run `test:staging` and see how it can take ownership of sending a transaction, the additional in this case is that you need to create a msg.data, for this reason it uses an ethers.js id method.
+`selfdestruct()` is an interesting topic, because you can use it to push ether force, even your contract has no fallback function, also if you push the rollback function it doesn't work.
+
+So the solution is to insert a `self-destruct()` in your attack function and pass as argument the address you want to attack.
 ### Run test [automated solution]
  - `yarn test:unit` for local testing 
  - `yarn deploy:testnet` remember change address in `helper-hardhat-config.ts`
@@ -84,8 +77,7 @@ You can run `test:staging` and see how it can take ownership of sending a transa
 
 ### Preventative Techniques
 
-> Use stateless Library
-The delegatecall function is a powerful feature, but a dangerous one, and must be used with extreme care.
+> It is important not to count on the invariant address(this).balance == 0 for any contract logic.
 
 ## License
 

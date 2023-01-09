@@ -1,7 +1,7 @@
 {
-  "name": "delegation",
+  "name": "force",
   "version": "1.0.0",
-  "description": "The goal of this level is for you to claim ownership of the instance you are given.",
+  "description": "The goal of this level is to make the balance of the contract greater than zero.",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",
