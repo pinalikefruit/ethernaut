@@ -6,30 +6,28 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel8.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel9.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Vault [SOLUTION]</h3>
+  <h1 align="center">King [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Vault !
+    🍍Hi  here you can found one of the solution for the challenge King !
   </p>
 </div>
 
 ## Challenge
-* Unlock the vault to pass the level!
+* Your goal is to break it!
 
 > Solution: 
-  [King Contract](https://goerli.etherscan.io/address/0x1432f924a3beca2bf17b29151e5785801484fedb#internaltx) || [Attack Contract](https://goerli.etherscan.io/address/0x69bb53aA58f7F38824741FaA3Da9Dd2b9BCA3106#internaltx)
+  [King Contract](https://goerli.etherscan.io/address/0x63922d77010d4374e14e720b2ad4b1dc3be6f8ef#internaltx) || [Attack Contract](https://goerli.etherscan.io/address/0x91945B1247c95260eE74D78b8Fcc270f2D088221#internaltx)
 
-## Complementary information to solve the challenge
-You can do it.
+<!-- ## Complementary information to solve the challenge -->
+
 
 
 ## Extra help
-It's important to remember that marking a variable as private only prevents other contracts from accessing it. State variables marked as private and local variables are still publicly accessible.
-Information about [private storage](https://docs.soliditylang.org/en/v0.8.17/security-considerations.html?highlight=private%20store#private-information-and-randomness)
-
+- Use a smart contract for this challenge and remember that without the "fallback" feature a smart contract cannot receive funds.
 # Getting Started
 
 ## Requirements
@@ -51,7 +49,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 08-vault
+git checkout 09-king
 ```
 
 Then install dependencies
@@ -60,8 +58,7 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-
-How is it not possible to access a smart contract, You can use a `ethers.js` library and apply this method [getContractAt] (https://docs.ethers.org/v5/api/providers/provider/#Provider-getStorageAt), you can see all the code in `test/ staging/vault.staging.test.ts`
+  If you send at least the prize amount to the king contract and your hack contract dont have any fallback function, it is impossible for the king contract to send fund when another participant try to get the crown.
 
 ### Run test [automated solution]
  - `yarn test:unit` for local testing 
@@ -73,7 +70,7 @@ How is it not possible to access a smart contract, You can use a `ethers.js` lib
 
 ### Preventative Techniques
 
-> Dont push any relevant or secret information in your smart contract.
+> Dont push any relevant or secret data in your smart contract NEVER.
 
 ## License
 
