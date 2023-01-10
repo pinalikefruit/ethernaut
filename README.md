@@ -50,6 +50,7 @@ This will be the dynamic for each challenge:
 5. <a href="https://github.com/pinalikefruit/ethernaut/tree/05-token"> Token </a>
 6. <a href="https://github.com/pinalikefruit/ethernaut/tree/06-delegation"> Delegation </a>
 7. <a href="https://github.com/pinalikefruit/ethernaut/tree/07-force"> Force </a>
+8. <a href="https://github.com/pinalikefruit/ethernaut/tree/08-vault"> Vault </a>
 
 
 ### Built With
