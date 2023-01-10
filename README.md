@@ -6,28 +6,33 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel9.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel10.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">King [SOLUTION]</h3>
+  <h1 align="center">Re-rentrancy [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge King !
+    🍍Hi  here you can found one of the solution for the challenge Re-rentrancy !
   </p>
 </div>
 
 ## Challenge
-* Your goal is to break it!
+* The goal of this level is for you to steal all the funds from the contract.
 
 > Solution: 
-  [King Contract](https://goerli.etherscan.io/address/0x63922d77010d4374e14e720b2ad4b1dc3be6f8ef#internaltx) || [Attack Contract](https://goerli.etherscan.io/address/0x91945B1247c95260eE74D78b8Fcc270f2D088221#internaltx)
+  [Re-entrancy Contract](https://goerli.etherscan.io/address/0x339EE89f01AA7E978df58B98B83a5456dcb599F1#internaltx) || [Attack Contract](https://goerli.etherscan.io/address/0x0ff8fc20f1ee1c43472ce918cd7b3f5c4c2f3945#internaltx)
 
-<!-- ## Complementary information to solve the challenge -->
-
+## Complementary information to solve the challenge
+* Untrusted contracts can execute code where you least expect it.
+* Fallback methods
+* Throw/revert bubbling
+* Sometimes the best way to attack a contract is with another contract.
+* See the Help page above, section "Beyond the console"
 
 
 ## Extra help
-- Use a smart contract for this challenge and remember that without the "fallback" feature a smart contract cannot receive funds.
+- You can push function in fallback methods
+- Check reentrancy attack docs like [solidity docs](https://docs.soliditylang.org/en/v0.8.17/security-considerations.html?highlight=re-entrance#re-entrancy)
 # Getting Started
 
 ## Requirements
@@ -49,7 +54,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 09-king
+git checkout 10-re-entrancy
 ```
 
 Then install dependencies
@@ -58,8 +63,7 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-  If you send at least the prize amount to the king contract and your hack contract dont have any fallback function, it is impossible for the king contract to send fund when another participant try to get the crown.
-
+  The bugs is in `withdraw()` function, you update the balance before you send funds.
 ### Run test [automated solution]
  - `yarn test:unit` for local testing 
  - `yarn deploy:testnet` remember change address in `helper-hardhat-config.ts`
@@ -70,7 +74,7 @@ yarn
 
 ### Preventative Techniques
 
-> Dont push any relevant or secret data in your smart contract NEVER.
+> If you use `<0.8.0` version in pragma, you need protect by reentrance attack, use modifier, openzeppelin library or for send funds use `transfer()` or `send()`.
 
 ## License
 

@@ -1,7 +1,7 @@
 {
-  "name": "king",
+  "name": "reentrance",
   "version": "1.0.0",
-  "description": "Your goal is to break it!",
+  "description": "The goal of this level is for you to steal all the funds from the contract.",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",
