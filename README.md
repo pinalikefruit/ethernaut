@@ -20,7 +20,7 @@
 * Unlock the vault to pass the level!
 
 > Solution: 
-  [Vault Contract](https://goerli.etherscan.io/address/0x86B408fD97E4BFc8e9c91aC7cd3d39c9d9505964)
+  [King Contract](https://goerli.etherscan.io/address/0x1432f924a3beca2bf17b29151e5785801484fedb#internaltx) || [Attack Contract](https://goerli.etherscan.io/address/0x69bb53aA58f7F38824741FaA3Da9Dd2b9BCA3106#internaltx)
 
 ## Complementary information to solve the challenge
 You can do it.

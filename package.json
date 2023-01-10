@@ -1,7 +1,7 @@
 {
-  "name": "vault",
+  "name": "king",
   "version": "1.0.0",
-  "description": "Unlock the vault to pass the level!",
+  "description": "Your goal is to break it!",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",

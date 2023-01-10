@@ -13,7 +13,7 @@ export const networkConfig: networkConfigInfo = {
     },
     5: {
         name: "goerli",
-        contractAddress: "0x86B408fD97E4BFc8e9c91aC7cd3d39c9d9505964"
+        contractAddress: "<CONTRACT_ADDRESS>"
     },
     1: {
         name: "mainnet",
