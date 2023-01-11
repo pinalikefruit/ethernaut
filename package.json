@@ -1,7 +1,7 @@
 {
-  "name": "reentrance",
+  "name": "elevator",
   "version": "1.0.0",
-  "description": "The goal of this level is for you to steal all the funds from the contract.",
+  "description": "Take the elevator to the top.",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",

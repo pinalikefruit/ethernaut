@@ -2,7 +2,7 @@ import { DeployFunction } from "hardhat-deploy/types"
 import { HardhatRuntimeEnvironment } from "hardhat/types"
 import { developmentChains } from "../helper-hardhat-config"
 
-const deployReentrance: DeployFunction = async function(
+const deployElevator: DeployFunction = async function(
     hre: HardhatRuntimeEnvironment
 ){
     const { deployments, getNamedAccounts, network } = hre
@@ -14,18 +14,18 @@ const deployReentrance: DeployFunction = async function(
     log('---------------------------------------------------')
     
     if(developmentChains.includes(network.name)){
-        log("Local network detected! Deploying Reentrance contract ...")
-        await deploy("Reentrance",{
-            contract:"Reentrance",
+        log("Local network detected! Deploying Elevator contract ...")
+        await deploy("Elevator",{
+            contract:"Elevator",
             from: deployer,
             args: args,
             log: true
         })
        
-        log("Reentrance contract deployed!")
+        log("Elevator contract deployed!")
         log('---------------------------------------------------')
     }
 }
 
-export default deployReentrance
-deployReentrance.tags = ["all", "reentrance"]
+export default deployElevator
+deployElevator.tags = ["all", "elevator"]

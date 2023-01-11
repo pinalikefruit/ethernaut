@@ -6,33 +6,29 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel10.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel11.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Re-rentrancy [SOLUTION]</h3>
+  <h1 align="center">Elevator [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Re-rentrancy !
+    🍍Hi  here you can found one of the solution for the challenge Elevator!
   </p>
 </div>
 
 ## Challenge
-* The goal of this level is for you to steal all the funds from the contract.
+* Take the elevetor to the top
 
 > Solution: 
-  [Re-entrancy Contract](https://goerli.etherscan.io/address/0x339EE89f01AA7E978df58B98B83a5456dcb599F1#internaltx) || [Attack Contract](https://goerli.etherscan.io/address/0x0ff8fc20f1ee1c43472ce918cd7b3f5c4c2f3945#internaltx)
+  [Elevator Contract](https://goerli.etherscan.io/address/0x4D8F5690123d7bBDbfDD679b2b1e4A1E63B1e450#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0x57F134A224C5a9Fc3ed8B95a6Dd1c914d4D00195#code)
 
 ## Complementary information to solve the challenge
-* Untrusted contracts can execute code where you least expect it.
-* Fallback methods
-* Throw/revert bubbling
-* Sometimes the best way to attack a contract is with another contract.
-* See the Help page above, section "Beyond the console"
+* Sometimes solidity is not good at keeping promises.
+* This Elevator expects to be used from a Building.
 
 
 ## Extra help
-- You can push function in fallback methods
-- Check reentrancy attack docs like [solidity docs](https://docs.soliditylang.org/en/v0.8.17/security-considerations.html?highlight=re-entrance#re-entrancy)
+If possible call a function and returns two different value?
 # Getting Started
 
 ## Requirements
@@ -54,7 +50,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 10-re-entrancy
+git checkout 11-elevator
 ```
 
 Then install dependencies
@@ -63,7 +59,8 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-  The bugs is in `withdraw()` function, you update the balance before you send funds.
+1. The elevator contract using `msg.sender` for example Building, so you have full control of `isLastFloor()`,here is the key.
+2. Check `Hack.sol` for the complete solution.
 ### Run test [automated solution]
  - `yarn test:unit` for local testing 
  - `yarn deploy:testnet` remember change address in `helper-hardhat-config.ts`
@@ -73,9 +70,7 @@ yarn
 > You can see all code explain
 
 ### Preventative Techniques
-
-> If you use `<0.8.0` version in pragma, you need protect by reentrance attack, use modifier, openzeppelin library or for send funds use `transfer()` or `send()`.
-
+> You can use the `view` or `pure` function modifier on an interface in order to prevent state modifications. 
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.
