@@ -74,7 +74,11 @@ yarn
 
 ### Preventative Techniques
 
-> If you use `<0.8.0` version in pragma, you need protect by reentrance attack, use modifier, openzeppelin library or for send funds use `transfer()` or `send()`.
+* If you use `<0.8.0` version in pragma, you need protect by reentrance attack
+* Use the [Checks-Effects-Interations Pattern](https://docs.soliditylang.org/en/develop/security-considerations.html#use-the-checks-effects-interactions-pattern)
+* Use modifier [ReentrancyGuard](https://docs.openzeppelin.com/contracts/2.x/api/utils#ReentrancyGuard) or [PullPayment](https://docs.openzeppelin.com/contracts/2.x/api/payment#PullPayment).
+* `transfer` and `send` are no longer recommended solutions as they can potentially break contracts after the Istanbul hard fork
+
 
 ## License
 
