@@ -51,6 +51,7 @@ This will be the dynamic for each challenge:
 6. <a href="https://github.com/pinalikefruit/ethernaut/tree/06-delegation"> Delegation </a>
 7. <a href="https://github.com/pinalikefruit/ethernaut/tree/07-force"> Force </a>
 8. <a href="https://github.com/pinalikefruit/ethernaut/tree/08-vault"> Vault </a>
+9. <a href="https://github.com/pinalikefruit/ethernaut/tree/09-king"> King </a>
 
 
 ### Built With
