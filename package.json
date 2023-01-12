@@ -1,7 +1,7 @@
 {
-  "name": "elevator",
+  "name": "privacy",
   "version": "1.0.0",
-  "description": "Take the elevator to the top.",
+  "description": "The creator of this contract was careful enough to protect the sensitive areas of its storage. Unlock this contract to beat the level",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",
