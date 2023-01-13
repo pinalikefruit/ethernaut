@@ -53,6 +53,7 @@ This will be the dynamic for each challenge:
 8. <a href="https://github.com/pinalikefruit/ethernaut/tree/08-vault"> Vault </a>
 9. <a href="https://github.com/pinalikefruit/ethernaut/tree/09-king"> King </a>
 10. <a href="https://github.com/pinalikefruit/ethernaut/tree/10-re-entrancy"> Re-entrancy </a>
+11. <a href="https://github.com/pinalikefruit/ethernaut/tree/11-elevator"> Elevator </a>
 
 
 ### Built With
