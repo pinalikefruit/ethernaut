@@ -6,29 +6,28 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel12.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel13.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Privacy [SOLUTION]</h3>
+  <h1 align="center">Gatekeeper One [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Privacy!
+    🍍Hi  here you can found one of the solution for the challenge Gatekeeper One!
   </p>
 </div>
 
 ## Challenge
-* The creator of this contract was careful enough to protect the sensitive areas of its storage. Unlock this contract to beat the level
+* Make it past the gatekeeper and register as an entrant to pass this level.
 
 > Solution: 
-  [Privacy Contract](https://goerli.etherscan.io/address/0xBcAED4F591B6DA3Ce3cB0C3b2Bd80d009e99A37D)
+  [GateKeppper Contract](https://goerli.etherscan.io/address/0xEf7832361768cC85E3C5c7A79374a4825e393b11#internaltx) || [Attack Contract](https://goerli.etherscan.io/address/0x34747ebf530d5cb162fbab50da8338d33ab7fb87)
 ## Complementary information to solve the challenge
-* Understanding how storage works
-* Understanding how parameter parsing works
-* Understanding how casting works
+* Remember what you've learned from the Telephone and Token levels.
+* You can learn more about the special function gasleft(), in Solidity's documentation.
 
 
 ## Extra help
-Remember that metamask is just a commodity. Use another tool if it is presenting problems. Advanced gameplay could involve using remix, or your own web3 provider
+You need extra tool for calculate gateTwo modifier. Recomendation [Foundry](https://github.com/foundry-rs/foundry)
 # Getting Started
 
 ## Requirements
@@ -50,7 +49,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 12-privacy
+git checkout 13-gatekeeper-one
 ```
 
 Then install dependencies
@@ -59,9 +58,12 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-Well, we have knowledge for the resolution in the vault challenge about private data storage, here is no different, in `contract/Privacy.sol` in the comment line I push the slot location for each variable is easier to understand where, take any variable from this contract and then you will get the value simply reduced to 16 bytes.
+* `gateOne()` is resolved in the [telephone challenge](https://github.com/pinalikefruit/ethernaut/tree/04-telephone)
+* The hard part for me, in this challenge is the `gateTwo()` modifier, the Hardhat tool doesn't work as expected to calculate the remaining gas, it works on the local network, but not on the testnet. So, I can use *foundry framework* and push all the code to test it in this repository [get gaslef()](https://github.com/pinalikefruit/gatekeeper-one-test)
+* You must understand [explicit conversion](https://docs.soliditylang.org/en/latest/types.html#explicit-conversions)
 
-### Run test [automated solution]
+>_Note: depending on solidity version you use, gas use can change_
+### Run Solution [automated solution]
  - `yarn test:unit` for local testing 
  - `yarn deploy:testnet` remember change address in `helper-hardhat-config.ts`
  - `yarn test:staging` for goerli network, just change the contract address in `helper-hardhat-config.ts`
@@ -70,7 +72,7 @@ Well, we have knowledge for the resolution in the vault challenge about private 
 > You can see all code explain
 
 ### Preventative Techniques
-> 
+> If you use any function for hide information like these modifier. Well, you can see aren't safe.
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.
