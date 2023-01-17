@@ -6,28 +6,30 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel13.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel14.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Gatekeeper One [SOLUTION]</h3>
+  <h1 align="center">Gatekeeper Two [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Gatekeeper One!
+    🍍Hi  here you can found one of the solution for the challenge Gatekeeper Two!
   </p>
 </div>
 
 ## Challenge
-* Make it past the gatekeeper and register as an entrant to pass this level.
+* Register as an entrant to pass this level.
 
 > Solution: 
-  [GateKeppper Contract](https://goerli.etherscan.io/address/0xEf7832361768cC85E3C5c7A79374a4825e393b11#internaltx) || [Attack Contract](https://goerli.etherscan.io/address/0x34747ebf530d5cb162fbab50da8338d33ab7fb87)
+  [GateKeppper Two Contract](https://goerli.etherscan.io/address/0xfF42A4cCdfE5064651432064Ce3430bd7be8185b#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0xab82B4141716d558c7156eE729D62A246A145A97#internaltx)
 ## Complementary information to solve the challenge
-* Remember what you've learned from the Telephone and Token levels.
-* You can learn more about the special function gasleft(), in Solidity's documentation.
+* Remember what you've learned from getting past the first gatekeeper - the first gate is the same.
+* The assembly keyword in the second gate allows a contract to access functionality that is not native to vanilla Solidity. See here for more information. The extcodesize call in this gate will get the size of a contract's code at a given address - you can learn more about how and when this is set in section 7 of the yellow paper.
+* The ^ character in the third gate is a bitwise operation (XOR), and is used here to apply another common bitwise operation (see here). The Coin Flip level is also a good place to start when approaching this challenge.
 
 
 ## Extra help
-You need extra tool for calculate gateTwo modifier. Recomendation [Foundry](https://github.com/foundry-rs/foundry)
+With the complementary information, you got it!
+
 # Getting Started
 
 ## Requirements
@@ -49,7 +51,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 13-gatekeeper-one
+git checkout 14-gatekeeper-two
 ```
 
 Then install dependencies
@@ -58,11 +60,9 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-* `gateOne()` is resolved in the [telephone challenge](https://github.com/pinalikefruit/ethernaut/tree/04-telephone)
-* The hard part for me, in this challenge is the `gateTwo()` modifier, the Hardhat tool doesn't work as expected to calculate the remaining gas, it works on the local network, but not on the testnet. So, I can use *foundry framework* and push all the code to test it in this repository [get gaslef()](https://github.com/pinalikefruit/gatekeeper-one-test)
-* You must understand [explicit conversion](https://docs.soliditylang.org/en/latest/types.html#explicit-conversions)
-
->_Note: depending on solidity version you use, gas use can change_
+* `gateOne()` solution is the same as the gateOne of 13 challenges.
+* `gateTwo()` If you look in the assembly documentation, you see the `extcodesize()` and get the size of the code at the `caller()` address in our case, an address with no data because it hasn't been completed yet.
+* Just apply the math to get `0xffffffffffffffffffff` is the same as `type (uint64).max`
 ### Run Solution [automated solution]
  - `yarn test:unit` for local testing 
  - `yarn deploy:testnet` remember change address in `helper-hardhat-config.ts`

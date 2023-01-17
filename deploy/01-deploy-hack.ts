@@ -13,14 +13,14 @@ const deployHack: DeployFunction = async function(
     let contractAddress:string 
 
     if(developmentChains.includes(network.name)){
-        const GatekeeperOne = await deployments.get("GatekeeperOne")
-        contractAddress = GatekeeperOne.address        
+        const GatekeeperTwo = await deployments.get("GatekeeperTwo")
+        contractAddress = GatekeeperTwo.address        
     } else {
         contractAddress = networkConfig[network.config.chainId!]["contractAddress"]!
     }
     log("--------------------------------------")
     log("Deploying Hack and waiting for confirmations...")
-    const args: string[] = [contractAddress]
+    const args: any[] = [contractAddress]
     const waitBlockConfirmations = developmentChains.includes(network.name)
         ? 1
         : VERIFICATION_BLOCK_CONFIRMATIONS
@@ -30,11 +30,10 @@ const deployHack: DeployFunction = async function(
         args: args,
         log: true,
         waitConfirmations: waitBlockConfirmations,
-        // gasLimit:300000,
     })
     
     if(!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY){
-        log("verifying...")
+        log("Verifying...")
         await verify(hack.address,args)
     }
 }

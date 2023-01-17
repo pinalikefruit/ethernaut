@@ -2,7 +2,7 @@ import { DeployFunction } from "hardhat-deploy/types"
 import { HardhatRuntimeEnvironment } from "hardhat/types"
 import { developmentChains } from "../helper-hardhat-config"
 
-const deployGateKeeperOne: DeployFunction = async function(
+const deployMocks: DeployFunction = async function(
     hre: HardhatRuntimeEnvironment
 ){
     const { deployments, getNamedAccounts, network } = hre
@@ -14,19 +14,18 @@ const deployGateKeeperOne: DeployFunction = async function(
     log('---------------------------------------------------')
     
     if(developmentChains.includes(network.name)){
-        log("Local network detected! Deploying GatekeeperOne contract ...")
-        await deploy("GatekeeperOne",{
-            contract:"GatekeeperOne",
+        log("Local network detected! Deploying mocks contract ...")
+        await deploy("GatekeeperTwo",{
             from: deployer,
             args: args,
             log: true
         })
        
-        log("GatekeeperOne contract deployed!")
+        log("Mocks deployed!")
         log('---------------------------------------------------')
     }
 }
 
 
-export default deployGateKeeperOne
-deployGateKeeperOne.tags = ["all", "gatekeeperOne"]
+export default deployMocks
+deployMocks.tags = ["all", "mocks"]

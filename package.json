@@ -1,7 +1,7 @@
 {
-  "name": "gatekeeper-one",
+  "name": "gatekeeper-two",
   "version": "1.0.0",
-  "description": "Make it past the gatekeeper and register as an entrant to pass this level.",
+  "description": "Register as an entrant to pass this level",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",
@@ -11,8 +11,10 @@
     "lint": "yarn solhint 'contracts/**/*.sol' --fix",
     "lint:fix": "yarn solhint 'contracts/**/*.sol' --fix",
     "format": "yarn prettier --write",
-    "coverage": "yarn hardhat coverage"
+    "coverage": "yarn hardhat coverage",
+    "typechain": "yarn hardhat typechain"
   },
+  "license": "WTFPL",
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",
     "@ethersproject/providers": "^5.4.7",
