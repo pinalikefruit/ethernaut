@@ -8,17 +8,16 @@ export interface networkConfigInfo {
 }
 
 export const networkConfig: networkConfigInfo = {
-    31337: {
-        name: "localhost",
+    1: {
+        name: "mainnet",
     },
     5: {
         name: "goerli",
         contractAddress: "<CONTRACT_ADDRESS>"
     },
-    1: {
-        name: "mainnet",
+    31337: {
+        name: "localhost",
     },
-
 }
 
 export const developmentChains = ["localhost", "hardhat"]
