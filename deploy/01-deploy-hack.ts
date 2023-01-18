@@ -13,7 +13,7 @@ const deployHack: DeployFunction = async function(
     let contractAddress:string 
 
     if(developmentChains.includes(network.name)){
-        const GatekeeperTwo = await deployments.get("GatekeeperTwo")
+        const GatekeeperTwo = await deployments.get("NaughtCoin")
         contractAddress = GatekeeperTwo.address        
     } else {
         contractAddress = networkConfig[network.config.chainId!]["contractAddress"]!

@@ -7,15 +7,15 @@ const deployMocks: DeployFunction = async function(
 ){
     const { deployments, getNamedAccounts, network } = hre
     const { deploy, log } = deployments
-    const { deployer } = await getNamedAccounts()
+    const { deployer, hacker } = await getNamedAccounts()
     
-    let args:any[] = []
+    let args:any[] = [hacker]
     
     log('---------------------------------------------------')
     
     if(developmentChains.includes(network.name)){
         log("Local network detected! Deploying mocks contract ...")
-        await deploy("GatekeeperTwo",{
+        await deploy("NaughtCoin",{
             from: deployer,
             args: args,
             log: true
