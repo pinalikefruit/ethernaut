@@ -15,19 +15,12 @@ const deployMocks: DeployFunction = async function(
     
     if(developmentChains.includes(network.name)){
         log("Local network detected! Deploying mocks contract ...")
-        const lib = await deploy("LibraryContract",{
+        await deploy("MagicNum",{
             from: deployer,
-            args: [],
+            args: args,
             log: true
-        })
-        log("Library contract deployed!")
-        await deploy("Preservation",{
-            from: deployer,
-            args: [lib.address,lib.address],
-            log: true
-        })
-       
-        log("Preservation deployed!")
+        })       
+        log("Mocks deployed!")
         log('---------------------------------------------------')
     }
 }

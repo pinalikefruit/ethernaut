@@ -6,31 +6,29 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel16.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel18.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Preservation [SOLUTION]</h3>
+  <h1 align="center">Magic Number [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Preservation!
+    🍍Hi  here you can found one of the solution for the challenge Magic Number!
   </p>
 </div>
 
 ## Challenge
-This contract utilizes a library to store two different times for two different timezones. The constructor creates two instances of the library for each time to be stored.
-
-The goal of this level is for you to claim ownership of the instance you are given.
+To solve this level, you only need to provide the Ethernaut with a Solver, a contract that responds to whatIsTheMeaningOfLife() with the right number.
 
 > Solution: 
-  [Preservation Contract](https://goerli.etherscan.io/address/0xC8E6F29B67dd6bE598B8C1827D3785bDFf00A25A#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0xbfaf359d60d1e6396217444e930da66308129017)
+  [Magic Number Contract](https://goerli.etherscan.io/address/0x2df86a480a3c15592cc60a210d764a3ec4a25ef6) || [Hack Contract](https://goerli.etherscan.io/address/0xe8365d14d1036d81fb5da92444bebabe21989b16#internaltx)
 ## Complementary information to solve the challenge
-* Look into Solidity's documentation on the delegatecall low level function, how it works, how it can be used to delegate operations to on-chain. libraries, and what implications it has on execution scope.
-* Understanding what it means for delegatecall to be context-preserving.
-* Understanding how storage variables are stored and accessed.
-* Understanding how casting works between different data types.
+The solver's code needs to be really tiny. Really reaaaaaallly tiny. Like freakin' really really itty-bitty tiny: 10 opcodes at most.
+
+Hint: Perhaps its time to leave the comfort of the Solidity compiler momentarily, and build this one by hand O_o. That's right: Raw EVM bytecode.
+
 
 ## Extra help
-With the complementary information, you got it! . Also, remember we pass a level similar call [delegation](https://github.com/pinalikefruit/ethernaut/tree/06-delegation) check .
+
 
 # Getting Started
 
@@ -53,7 +51,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 16-preservation
+git checkout 18-magic-number  
 ```
 
 Then install dependencies
@@ -62,11 +60,12 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-Well, is a little different the previos challenge `delegation` .But, if you really understand how delegatecall work you don't have problem here. 
-Remember the funciton `delegatecall()` preserves context and the storage layout must be the same for the contract calling delegatecall and the contract getting called.
-You can check the solution in `contracts/Hack.sol`
+Ok this challange is very different, so, we going step by step.
+
+1. Runtime code: 
+  For return always the magic number, we need use opcode
 ### Run Solution [automated solution]
- - `yarn test:unit` for local testing 
+ <!-- - `yarn test:unit` for local testing  -->
  - `yarn deploy:goerli` remember change address in `helper-hardhat-config.ts`
  - `yarn test:staging` for goerli network, just change the contract address in `helper-hardhat-config.ts`
 
@@ -74,7 +73,7 @@ You can check the solution in `contracts/Hack.sol`
 > You can see all code explain
 
 ### Preventative Techniques
-> Use stateless Library
+> 
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.

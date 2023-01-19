@@ -13,14 +13,14 @@ const deployHack: DeployFunction = async function(
     let contractAddress:string 
 
     if(developmentChains.includes(network.name)){
-        const Preservation = await deployments.get("Preservation")
+        const Preservation = await deployments.get("MagicNum")
         contractAddress = Preservation.address        
     } else {
         contractAddress = networkConfig[network.config.chainId!]["contractAddress"]!
     }
     log("--------------------------------------")
     log("Deploying Hack and waiting for confirmations...")
-    const args: any[] = [contractAddress]
+    const args: any[] = []
     const waitBlockConfirmations = developmentChains.includes(network.name)
         ? 1
         : VERIFICATION_BLOCK_CONFIRMATIONS
