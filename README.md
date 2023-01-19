@@ -6,31 +6,28 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel16.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel17.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Preservation [SOLUTION]</h3>
+  <h1 align="center">Recovery [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Preservation!
+    🍍Hi  here you can found one of the solution for the challenge Recovery!
   </p>
 </div>
 
 ## Challenge
-This contract utilizes a library to store two different times for two different timezones. The constructor creates two instances of the library for each time to be stored.
+A contract creator has built a very simple token factory contract. Anyone can create new tokens with ease. After deploying the first token contract, the creator sent 0.001 ether to obtain more tokens. They have since lost the contract address.
 
-The goal of this level is for you to claim ownership of the instance you are given.
+This level will be completed if you can recover (or remove) the 0.001 ether from the lost contract address.
 
 > Solution: 
-  [Preservation Contract](https://goerli.etherscan.io/address/0xC8E6F29B67dd6bE598B8C1827D3785bDFf00A25A#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0xbfaf359d60d1e6396217444e930da66308129017)
+  [SimpleToken Contract](https://goerli.etherscan.io/address/0x0ef6e9f5a1e0c7ac4b3732c44c272f4c27231f04#internaltx) 
 ## Complementary information to solve the challenge
-* Look into Solidity's documentation on the delegatecall low level function, how it works, how it can be used to delegate operations to on-chain. libraries, and what implications it has on execution scope.
-* Understanding what it means for delegatecall to be context-preserving.
-* Understanding how storage variables are stored and accessed.
-* Understanding how casting works between different data types.
+You have completed a similar challenge using `selfdestruct()` check againg.
 
 ## Extra help
-With the complementary information, you got it! . Also, remember we pass a level similar call [delegation](https://github.com/pinalikefruit/ethernaut/tree/06-delegation) check .
+Use ABI of simpleContract.
 
 # Getting Started
 
@@ -53,7 +50,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 16-preservation
+git checkout 17-recovery
 ```
 
 Then install dependencies
@@ -62,9 +59,7 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-Well, is a little different the previos challenge `delegation` .But, if you really understand how delegatecall work you don't have problem here. 
-Remember the funciton `delegatecall()` preserves context and the storage layout must be the same for the contract calling delegatecall and the contract getting called.
-You can check the solution in `contracts/Hack.sol`
+We see when I get a new instance the contract creates a new contract call simpleToken, well if I get the contract address it's the same ABI then we can fire the `destroy()` function and we can send the rest of the money to another account . You can see the resolution in `test/recovery.staging.test.ts`
 ### Run Solution [automated solution]
  - `yarn test:unit` for local testing 
  - `yarn deploy:goerli` remember change address in `helper-hardhat-config.ts`
@@ -74,7 +69,7 @@ You can check the solution in `contracts/Hack.sol`
 > You can see all code explain
 
 ### Preventative Techniques
-> Use stateless Library
+> For activate `selfdestruct()` use a owner modifier.
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.
