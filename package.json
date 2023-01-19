@@ -1,7 +1,7 @@
 {
-  "name": "naught-coin",
+  "name": "preservation",
   "version": "1.0.0",
-  "description": "Getting your token balance to 0.",
+  "description": "The goal of this level is for you to claim ownership of the instance you are given.",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",

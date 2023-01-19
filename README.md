@@ -6,27 +6,31 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel15.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel16.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Naught Coin [SOLUTION]</h3>
+  <h1 align="center">Preservation [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Naught Coin!
+    🍍Hi  here you can found one of the solution for the challenge Preservation!
   </p>
 </div>
 
 ## Challenge
-* NaughtCoin is an ERC20 token and you're already holding all of them. The catch is that you'll only be able to transfer them after a 10 year lockout period. Can you figure out how to get them out to another address so that you can transfer them freely? Complete this level by getting your token balance to 0.
+This contract utilizes a library to store two different times for two different timezones. The constructor creates two instances of the library for each time to be stored.
+
+The goal of this level is for you to claim ownership of the instance you are given.
 
 > Solution: 
-  [Naught Coin Two Contract](https://goerli.etherscan.io/address/0x3f0fC311cC69c92148aa1E706061F68379e8B590#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0x0c2BE8d56444b0a33c40EcD41fE27de12E799127)
+  [Preservation Contract](https://goerli.etherscan.io/address/0xC8E6F29B67dd6bE598B8C1827D3785bDFf00A25A#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0xbfaf359d60d1e6396217444e930da66308129017)
 ## Complementary information to solve the challenge
-* The [ERC20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) Spec
-* The [OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts) codebase
+* Look into Solidity's documentation on the delegatecall low level function, how it works, how it can be used to delegate operations to on-chain. libraries, and what implications it has on execution scope.
+* Understanding what it means for delegatecall to be context-preserving.
+* Understanding how storage variables are stored and accessed.
+* Understanding how casting works between different data types.
 
 ## Extra help
-With the complementary information, you got it! See all the function in the ERC20 documentation.
+With the complementary information, you got it! . Also, remember we pass a level similar call [delegation](https://github.com/pinalikefruit/ethernaut/tree/06-delegation) check .
 
 # Getting Started
 
@@ -49,7 +53,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 15-naught-coin
+git checkout 16-preservation
 ```
 
 Then install dependencies
@@ -58,23 +62,19 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-1. You need Naught Coin to approve the full amount.
-   ```
-      await contract.approve(CONTRACT_ADDRESS_NAUGHT_COIN,BALANCE)
-   ```
-    This phrase can be displayed in the console on the ethernaut page.
-
-2. When this is complete, you can run the following command.
+Well, is a little different the previos challenge `delegation` .But, if you really understand how delegatecall work you don't have problem here. 
+Remember the funciton `delegatecall()` preserves context and the storage layout must be the same for the contract calling delegatecall and the contract getting called.
+You can check the solution in `contracts/Hack.sol`
 ### Run Solution [automated solution]
- <!-- - `yarn test:unit` for local testing  -->
- - `yarn deploy:testnet` remember change address in `helper-hardhat-config.ts`
+ - `yarn test:unit` for local testing 
+ - `yarn deploy:goerli` remember change address in `helper-hardhat-config.ts`
  - `yarn test:staging` for goerli network, just change the contract address in `helper-hardhat-config.ts`
 
 
 > You can see all code explain
 
 ### Preventative Techniques
-> Checkout all the function you import always.
+> Use stateless Library
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.
