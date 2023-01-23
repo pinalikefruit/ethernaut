@@ -20,7 +20,7 @@
 To solve this level, you only need to provide the Ethernaut with a Solver, a contract that responds to whatIsTheMeaningOfLife() with the right number.
 
 > Solution: 
-  [Magic Number Contract](https://goerli.etherscan.io/address/0xBC2De6eb47B233893601452Cd93E213B1D417151) || [Hack Contract](https://goerli.etherscan.io/address/0xe8365d14d1036d81fb5da92444bebabe21989b16#internaltx)
+  [Magic Number Contract](https://goerli.etherscan.io/address/0xd668b227BD7706c96f5Eb0bfe07120cdf2e610E3#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0xA2D25Ba6BE71808d7bB9856dCF50DCDb24aF809F#internaltx)
 ## Complementary information to solve the challenge
 The solver's code needs to be really tiny. Really reaaaaaallly tiny. Like freakin' really really itty-bitty tiny: 10 opcodes at most.
 
