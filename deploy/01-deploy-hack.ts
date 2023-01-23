@@ -20,7 +20,7 @@ const deployHack: DeployFunction = async function(
     }
     log("--------------------------------------")
     log("Deploying Hack and waiting for confirmations...")
-    const args: any[] = []
+    const args: any[] = [contractAddress]
     const waitBlockConfirmations = developmentChains.includes(network.name)
         ? 1
         : VERIFICATION_BLOCK_CONFIRMATIONS
