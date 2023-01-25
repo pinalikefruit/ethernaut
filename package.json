@@ -1,7 +1,7 @@
 {
-  "name": "shop",
+  "name": "gatekeeper-three",
   "version": "1.0.0",
-  "description": "Сan you get the item from the shop for less than the price asked?.",
+  "description": "Cope with gates and become an entrant.",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",

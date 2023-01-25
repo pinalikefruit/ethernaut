@@ -6,39 +6,29 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel22.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel28.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Dex [SOLUTION]</h3>
+  <h1 align="center">Gatekeeper Three [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Dex!
+    🍍Hi  here you can found one of the solution for the challenge Gatekeeper Three!
   </p>
 </div>
 
 ## Challenge
-The goal of this level is for you to hack the basic DEX contract below and steal the funds by price manipulation.
+Cope with gates and become an entrant.
 
 > Solution: 
-  [Dex Contract]() || [Hack Contract](https://goerli.etherscan.io/address/0x9Adf15F9ED23e436Ba8Ef4C07DE1C97425339b34)
+  [Gatekeeper three Contract](https://goerli.etherscan.io/address/0xF8Da680583bDf457609db462DBbfd2bcCF22BA10#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0x74b52a10493f1baf4b74013b7728e0dd0903af15)
 ## Complementary information to solve the challenge
 
-You will start with 10 tokens of token1 and 10 of token2. The DEX contract starts with 100 of each token.
-
-You will be successful in this level if you manage to drain all of at least 1 of the 2 tokens from the contract, and allow the contract to report a "bad" price of the assets.
-
+* Recall return values of low-level functions.
+* Be attentive with semantic.
+* Refresh how storage works in Ethereum.
 ## Extra help
-Normally, when you make a swap with an ERC20 token, you have to approve the contract to spend your tokens for you. To keep with the syntax of the game, we've just added the approve method to the contract itself. So feel free to use contract.approve(contract.address, <uint amount>) instead of calling the tokens directly, and it will automatically approve spending the two tokens by the desired amount. Feel free to ignore the SwappableToken contract otherwise.
 
-  Things that might help:
-
-* How is the price of the token calculated?
-* How does the swap method work?
-* How do you approve a transaction of an ERC20?
-* Theres more than one way to interact with a contract!
-* Remix might help
-* What does "At Address" do
-
+See [Gatekeeper One](https://github.com/pinalikefruit/ethernaut/tree/13-gatekeeper-one) and [GateKeeper Two](https://github.com/pinalikefruit/ethernaut/tree/14-gatekeeper-two)
 # Getting Started
 
 ## Requirements
@@ -60,7 +50,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 22-dex
+git checkout 28-gatekeeper-three
 ```
 
 Then install dependencies
@@ -69,9 +59,9 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-
+All solution is split in two fase, you can see all the solution in `contract/Hack.sol`
 ### Run Solution [automated solution]
- - `yarn test:unit` for local testing 
+ <!-- - `yarn test:unit` for local testing  -->
  - `yarn deploy:goerli` remember change address in `helper-hardhat-config.ts`
  - `yarn test:staging` for goerli network, just change the contract address in `helper-hardhat-config.ts`
 
@@ -79,7 +69,7 @@ yarn
 > You can see all code explain
 
 ### Preventative Techniques
-> 
+> Don't set sensitive information as password in the blockchain.
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.
