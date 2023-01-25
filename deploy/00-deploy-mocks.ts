@@ -15,7 +15,7 @@ const deployMocks: DeployFunction = async function(
     
     if(developmentChains.includes(network.name)){
         log("Local network detected! Deploying mocks contract ...")
-        await deploy("MagicNum",{
+        await deploy("AlienCodex",{
             from: deployer,
             args: args,
             log: true

