@@ -16,11 +16,10 @@ const deployMocks: DeployFunction = async function(
     
     if(developmentChains.includes(network.name)){
         log("Local network detected! Deploying mocks contract ...")
-        await deploy("Denial",{
+        await deploy("Shop",{
             from: deployer,
             args: args,
             log: true,
-            value: ethers.utils.parseEther("0.001")
         })       
         log("Mocks deployed!")
         log('---------------------------------------------------')

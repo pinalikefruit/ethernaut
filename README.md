@@ -6,29 +6,29 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel20.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel21.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Denial [SOLUTION]</h3>
+  <h1 align="center">Shop [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Denial!
+    🍍Hi  here you can found one of the solution for the challenge Shop!
   </p>
 </div>
 
 ## Challenge
-This is a simple wallet that drips funds over time. You can withdraw the funds slowly by becoming a withdrawing partner.
-
-If you can deny the owner from withdrawing funds when they call withdraw() (whilst the contract still has funds, and the transaction is of 1M gas or less) you will win this level.
+Сan you get the item from the shop for less than the price asked?
 
 > Solution: 
-  [Denial Contract](https://goerli.etherscan.io/address/0x1f60d8828991fE4a8920395BECc33e8AB02C82D7#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0x8038D01b0580A21fc0174ca196DD609BFD90fA9F#code)
-<!-- ## Complementary information to solve the challenge
- -->
+  [Shop Contract](0xd7E5bFA3A1960CE9B19edB293276B04a1dcc834C) || [Hack Contract](https://goerli.etherscan.io/address/0x9Adf15F9ED23e436Ba8Ef4C07DE1C97425339b34)
+## Complementary information to solve the challenge
 
+* Shop expects to be used from a Buyer
+* Understanding restrictions of view functions
 
 ## Extra help
-* Remember [King Challenge](https://github.com/pinalikefruit/ethernaut/tree/09-king)
+You can solve it alone
+
 # Getting Started
 
 ## Requirements
@@ -50,7 +50,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 20-denial
+git checkout 21-shop
 ```
 
 Then install dependencies
@@ -59,8 +59,7 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-Well, the idea is to try to spend all the gas when the contract tries to send the amount to the partner. You can see the function inside a `receive()` callback function, a while loop than always is true.
-
+Well, if you say that when you press `buy()` you can send a minimum price of 100, but when you save the price and the new variable, you can send another value in our case 0.
 ### Run Solution [automated solution]
  - `yarn test:unit` for local testing 
  - `yarn deploy:goerli` remember change address in `helper-hardhat-config.ts`
@@ -70,9 +69,7 @@ Well, the idea is to try to spend all the gas when the contract tries to send th
 > You can see all code explain
 
 ### Preventative Techniques
-> If you are using a low level call to continue executing in the event an external call reverts, ensure that you specify a fixed gas stipend. For example call.gas(100000).value().
-
-Typically one should follow the checks-effects-interactions pattern to avoid reentrancy attacks, there can be other circumstances (such as multiple external calls at the end of a function) where issues such as this can arise.
+> Review what state change 
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.

