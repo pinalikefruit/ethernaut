@@ -1,3 +1,4 @@
+import { ethers } from "hardhat"
 import { DeployFunction } from "hardhat-deploy/types"
 import { HardhatRuntimeEnvironment } from "hardhat/types"
 import { developmentChains } from "../helper-hardhat-config"
@@ -15,10 +16,11 @@ const deployMocks: DeployFunction = async function(
     
     if(developmentChains.includes(network.name)){
         log("Local network detected! Deploying mocks contract ...")
-        await deploy("AlienCodex",{
+        await deploy("Denial",{
             from: deployer,
             args: args,
-            log: true
+            log: true,
+            value: ethers.utils.parseEther("0.001")
         })       
         log("Mocks deployed!")
         log('---------------------------------------------------')

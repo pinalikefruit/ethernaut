@@ -6,30 +6,29 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel19.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel20.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Alien Codex [SOLUTION]</h3>
+  <h1 align="center">Denial [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Alien Codex!
+    🍍Hi  here you can found one of the solution for the challenge Denial!
   </p>
 </div>
 
 ## Challenge
-You've uncovered an Alien contract. Claim ownership to complete the level.
+This is a simple wallet that drips funds over time. You can withdraw the funds slowly by becoming a withdrawing partner.
+
+If you can deny the owner from withdrawing funds when they call withdraw() (whilst the contract still has funds, and the transaction is of 1M gas or less) you will win this level.
 
 > Solution: 
-  [Alien Codex Contract](https://goerli.etherscan.io/address/0xd7a02d6bbae36593d3decb572d5fd60e63099484#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0x63727671639481aC27eFD1960B5530d01C216Daf)
-## Complementary information to solve the challenge
-* Understanding how array storage works
-* Understanding ABI specifications
-* Using a very underhanded approach
+  [Denial Contract](https://goerli.etherscan.io/address/0x1f60d8828991fE4a8920395BECc33e8AB02C82D7#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0x8038D01b0580A21fc0174ca196DD609BFD90fA9F#code)
+<!-- ## Complementary information to solve the challenge
+ -->
 
 
 ## Extra help
-- Remember underflow term
-- How you can modifie the storage ?
+* Remember [King Challenge](https://github.com/pinalikefruit/ethernaut/tree/09-king)
 # Getting Started
 
 ## Requirements
@@ -51,7 +50,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 19-alien-codex 
+git checkout 20-denial
 ```
 
 Then install dependencies
@@ -60,11 +59,10 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-it exploits the arithmetic underflow of array length, by expanding the array's bounds to the entire storage area of 2^256. The user is then able to modify all contract storage.
-Essentially by setting the length of codex to the length of EVM storage, we gain the ability to modify any slot of entire EVM storage.
+Well, the idea is to try to spend all the gas when the contract tries to send the amount to the partner. You can see the function inside a `receive()` callback function, a while loop than always is true.
 
 ### Run Solution [automated solution]
- <!-- - `yarn test:unit` for local testing  -->
+ - `yarn test:unit` for local testing 
  - `yarn deploy:goerli` remember change address in `helper-hardhat-config.ts`
  - `yarn test:staging` for goerli network, just change the contract address in `helper-hardhat-config.ts`
 
@@ -72,7 +70,9 @@ Essentially by setting the length of codex to the length of EVM storage, we gain
 > You can see all code explain
 
 ### Preventative Techniques
-> Method retract doesn't have a check for int underflow.
+> If you are using a low level call to continue executing in the event an external call reverts, ensure that you specify a fixed gas stipend. For example call.gas(100000).value().
+
+Typically one should follow the checks-effects-interactions pattern to avoid reentrancy attacks, there can be other circumstances (such as multiple external calls at the end of a function) where issues such as this can arise.
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.

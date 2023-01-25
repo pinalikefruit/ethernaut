@@ -13,7 +13,7 @@ const deployHack: DeployFunction = async function(
     let contractAddress:string 
 
     if(developmentChains.includes(network.name)){
-        const Preservation = await deployments.get("AlienCodex")
+        const Preservation = await deployments.get("Denial")
         contractAddress = Preservation.address        
     } else {
         contractAddress = networkConfig[network.config.chainId!]["contractAddress"]!
