@@ -60,6 +60,7 @@ This will be the dynamic for each challenge:
 15. <a href="https://github.com/pinalikefruit/ethernaut/tree/15-naught-coin"> Naught Coin </a>
 16. <a href="https://github.com/pinalikefruit/ethernaut/tree/16-preservation"> Preservation </a>
 17. <a href="https://github.com/pinalikefruit/ethernaut/tree/17-recovery"> Recovery </a>
+18. <a href="https://github.com/pinalikefruit/ethernaut/tree/18-magic-number"> Magic Number </a>
 
 
 ### Built With
