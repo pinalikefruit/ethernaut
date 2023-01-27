@@ -20,7 +20,7 @@
 The goal of this level is for you to hack the basic DEX contract below and steal the funds by price manipulation.
 
 > Solution: 
-  [Dex Contract]() || [Hack Contract](https://goerli.etherscan.io/address/0x9Adf15F9ED23e436Ba8Ef4C07DE1C97425339b34)
+  [Dex Contract]() || [Hack Contract](https://goerli.etherscan.io/address/0x4913F0043Fc628c8aafde2b60c26e228774b5b68)
 ## Complementary information to solve the challenge
 
 You will start with 10 tokens of token1 and 10 of token2. The DEX contract starts with 100 of each token.
@@ -69,9 +69,22 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
+The key to the solution is to really understand how `getSwapPrice` works in `Dex.sol`. You can use a pencil and paper and simulate how it works if visualization helps you. If you notice, when you trade all tokens for others, the price changes if you try again for another, then. How the contract pool has less and less token over time, you can get more token until one of the pool is empty.
+
+| Number Transaction | Token1 Hack| Token2 Hack | Token1 Pool | Token2 Pool |
+| ------------------ | ---------- | ----------- | ----------- | ----------- |
+| 0   |10 | 10 | 100 | 100 |
+| 1   | 0 | 20 | 110 | 90 |
+| 2   |24 | 0  | 86  | 110 |
+| 3   | 0 | 30 | 110 | 80 |
+| 4   |41 | 0 | 69 | 110 |
+| 5   | 0 | 65 | 110 | 45 |
+| 6   |110 | 25 | 0 | 85 |
+
+This is the flow representation of the`attack()` function for six transactions.
 
 ### Run Solution [automated solution]
- - `yarn test:unit` for local testing 
+ <!-- - `yarn test:unit` for local testing  -->
  - `yarn deploy:goerli` remember change address in `helper-hardhat-config.ts`
  - `yarn test:staging` for goerli network, just change the contract address in `helper-hardhat-config.ts`
 
@@ -79,7 +92,7 @@ yarn
 > You can see all code explain
 
 ### Preventative Techniques
-> 
+> Use oracle for get the price.
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.
