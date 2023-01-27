@@ -20,7 +20,7 @@
 The goal of this level is for you to hack the basic DEX contract below and steal the funds by price manipulation.
 
 > Solution: 
-  [Dex Contract]() || [Hack Contract](https://goerli.etherscan.io/address/0x4913F0043Fc628c8aafde2b60c26e228774b5b68)
+  [Dex Contract](https://goerli.etherscan.io/address/0x864956d7F1f8563E1d97986419A24dE92169aC52#tokentxns) || [Hack Contract](https://goerli.etherscan.io/address/0x4913F0043Fc628c8aafde2b60c26e228774b5b68)
 ## Complementary information to solve the challenge
 
 You will start with 10 tokens of token1 and 10 of token2. The DEX contract starts with 100 of each token.
