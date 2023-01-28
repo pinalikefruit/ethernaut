@@ -1,7 +1,7 @@
 {
-  "name": "dex",
+  "name": "dex-two",
   "version": "1.0.0",
-  "description": "You will be successful in this level if you manage to drain all of at least 1 of the 2 tokens from the contract, and allow the contract to report a bad price of the assets.",
+  "description": "You need to drain all balances of token1 and token2 from the DexTwo contract to succeed in this level.",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",

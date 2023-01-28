@@ -6,38 +6,31 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel22.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel23.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Dex [SOLUTION]</h3>
+  <h1 align="center">Dex Two [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Dex!
+    🍍Hi  here you can found one of the solution for the challenge Dex Two!
   </p>
 </div>
 
 ## Challenge
-The goal of this level is for you to hack the basic DEX contract below and steal the funds by price manipulation.
+This level will ask you to break DexTwo, a subtlely modified Dex contract from the previous level, in a different way.
+
+You need to drain all balances of token1 and token2 from the DexTwo contract to succeed in this level.
+
+You will still start with 10 tokens of token1 and 10 of token2. The DEX contract still starts with 100 of each token.
 
 > Solution: 
-  [Dex Contract](https://goerli.etherscan.io/address/0x864956d7F1f8563E1d97986419A24dE92169aC52#tokentxns) || [Hack Contract](https://goerli.etherscan.io/address/0x4913F0043Fc628c8aafde2b60c26e228774b5b68)
+  [Dex Two Contract](https://goerli.etherscan.io/address/0x99852a9f81CA6e4D99d5096F954335E34314e935#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0x943BBBFc68B4cb0d6c03b02e22cc777ac0e928A4) ||[Pina Token](https://goerli.etherscan.io/address/0xa7e266c7B386271B50E2878cd66FAF0250B2d916)
 ## Complementary information to solve the challenge
 
-You will start with 10 tokens of token1 and 10 of token2. The DEX contract starts with 100 of each token.
-
-You will be successful in this level if you manage to drain all of at least 1 of the 2 tokens from the contract, and allow the contract to report a "bad" price of the assets.
+How has the swap method been modified?
 
 ## Extra help
-Normally, when you make a swap with an ERC20 token, you have to approve the contract to spend your tokens for you. To keep with the syntax of the game, we've just added the approve method to the contract itself. So feel free to use contract.approve(contract.address, <uint amount>) instead of calling the tokens directly, and it will automatically approve spending the two tokens by the desired amount. Feel free to ignore the SwappableToken contract otherwise.
-
-  Things that might help:
-
-* How is the price of the token calculated?
-* How does the swap method work?
-* How do you approve a transaction of an ERC20?
-* Theres more than one way to interact with a contract!
-* Remix might help
-* What does "At Address" do
+Maybe you can swap you own token...
 
 # Getting Started
 
@@ -60,7 +53,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 22-dex
+git checkout 23-dex-two
 ```
 
 Then install dependencies
@@ -69,20 +62,14 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-The key to the solution is to really understand how `getSwapPrice` works in `Dex.sol`. You can use a pencil and paper and simulate how it works if visualization helps you. If you notice, when you trade all tokens for others, the price changes if you try again for another, then. How the contract pool has less and less token over time, you can get more token until one of the pool is empty.
-
-| Number Transaction | Token1 Hack| Token2 Hack | Token1 Pool | Token2 Pool |
-| ------------------ | ---------- | ----------- | ----------- | ----------- |
-| 0   |10 | 10 | 100 | 100 |
-| 1   | 0 | 20 | 110 | 90 |
-| 2   |24 | 0  | 86  | 110 |
-| 3   | 0 | 30 | 110 | 80 |
-| 4   |41 | 0 | 69 | 110 |
-| 5   | 0 | 65 | 110 | 45 |
-| 6   |110 | 25 | 0 | 85 |
-
-This is the flow representation of the`attack()` function for six transactions.
-
+If check the different between the contracts Dex and DexTwo, you can get this  sentence is out
+```
+require(
+            (from == token1 && to == token2) || (from == token2 && to == token1),
+            "Invalid tokens"
+        );
+```
+If not check the token1 and token2 address, you can deploy and swap any token ERC20. So, you can create any token and try to swap all token1 and token2 of the contract.
 ### Run Solution [automated solution]
  <!-- - `yarn test:unit` for local testing  -->
  - `yarn deploy:goerli` remember change address in `helper-hardhat-config.ts`
@@ -92,7 +79,7 @@ This is the flow representation of the`attack()` function for six transactions.
 > You can see all code explain
 
 ### Preventative Techniques
-> Use oracle for get the price.
+> Don't allow any account swap any token.
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.
