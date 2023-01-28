@@ -61,6 +61,7 @@ This will be the dynamic for each challenge:
 16. <a href="https://github.com/pinalikefruit/ethernaut/tree/16-preservation"> Preservation </a>
 17. <a href="https://github.com/pinalikefruit/ethernaut/tree/17-recovery"> Recovery </a>
 18. <a href="https://github.com/pinalikefruit/ethernaut/tree/18-magic-number"> Magic Number </a>
+19. <a href="https://github.com/pinalikefruit/ethernaut/tree/19-alien-codex"> Alien Codex </a>
 
 
 ### Built With
