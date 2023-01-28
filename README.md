@@ -6,31 +6,28 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel23.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel27.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Dex Two [SOLUTION]</h3>
+  <h1 align="center">Good Samaritan [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Dex Two!
+    🍍Hi  here you can found one of the solution for the challenge Good Samaritan!
   </p>
 </div>
 
 ## Challenge
-This level will ask you to break DexTwo, a subtlely modified Dex contract from the previous level, in a different way.
+This instance represents a Good Samaritan that is wealthy and ready to donate some coins to anyone requesting it.
 
-You need to drain all balances of token1 and token2 from the DexTwo contract to succeed in this level.
-
-You will still start with 10 tokens of token1 and 10 of token2. The DEX contract still starts with 100 of each token.
+Would you be able to drain all the balance from his Wallet?
 
 > Solution: 
-  [Dex Two Contract](https://goerli.etherscan.io/address/0x99852a9f81CA6e4D99d5096F954335E34314e935#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0x943BBBFc68B4cb0d6c03b02e22cc777ac0e928A4) ||[Pina Token](https://goerli.etherscan.io/address/0xa7e266c7B386271B50E2878cd66FAF0250B2d916)
+  [Good Samaritan Contract](https://goerli.etherscan.io/address/0x96e0e6987347b0d50a43c93a0fc949a0b1edc1b7#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0x96e0E6987347b0D50A43C93A0fc949a0B1eDC1B7#internaltx)
 ## Complementary information to solve the challenge
+* [Solidity Custom Errors](https://blog.soliditylang.org/2021/04/21/custom-errors/)
 
-How has the swap method been modified?
+<!-- ## Extra help -->
 
-## Extra help
-Maybe you can swap you own token...
 
 # Getting Started
 
@@ -53,7 +50,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 23-dex-two
+git checkout 27-good-samaritan
 ```
 
 Then install dependencies
@@ -62,14 +59,7 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-If check the different between the contracts Dex and DexTwo, you can get this  sentence is out
-```
-require(
-            (from == token1 && to == token2) || (from == token2 && to == token1),
-            "Invalid tokens"
-        );
-```
-If not check the token1 and token2 address, you can deploy and swap any token ERC20. So, you can create any token and try to swap all token1 and token2 of the contract.
+If you follow the `requestDonation()` function at some point you will see `transfer()` and inside there is another instance for `notify()` we have control over this function, so in our contract with sets a sentence, and the First, the amount is equal to or less than 10, so `revert` when this happens, the function calls `transferRemainder()` and then we let the transfer of the entire amount pass to us.
 ### Run Solution [automated solution]
  <!-- - `yarn test:unit` for local testing  -->
  - `yarn deploy:goerli` remember change address in `helper-hardhat-config.ts`
@@ -79,7 +69,7 @@ If not check the token1 and token2 address, you can deploy and swap any token ER
 > You can see all code explain
 
 ### Preventative Techniques
-> Don't allow any account swap any token.
+> It is not safe to assume that the error was thrown by the immediate target of the contract call
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.

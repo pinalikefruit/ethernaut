@@ -1,7 +1,7 @@
 {
-  "name": "dex-two",
+  "name": "good-samaritan",
   "version": "1.0.0",
-  "description": "You need to drain all balances of token1 and token2 from the DexTwo contract to succeed in this level.",
+  "description": "Would you be able to drain all the balance from his Wallet?",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",

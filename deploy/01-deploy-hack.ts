@@ -10,13 +10,17 @@ const deployHack: DeployFunction = async function(
     const { deploy, log } = deployments
     const { hacker } = await getNamedAccounts()
 
-    let contractAddress:string    
-    contractAddress = networkConfig[network.config.chainId!]["contractAddress"]!
+    let contractAddress:string 
+
+    if(developmentChains.includes(network.name)){
+        const Preservation = await deployments.get("GoodSamaritan")
+        contractAddress = Preservation.address        
+    } else {
+        contractAddress = networkConfig[network.config.chainId!]["contractAddress"]!
+    }
     log("--------------------------------------")
-    let Pina = await deployments.get("Pina")
-    let pinaAddress = Pina.address
     log("Deploying Hack and waiting for confirmations...")
-    const args: any[] = [contractAddress, pinaAddress]
+    const args: any[] = [contractAddress]
     const waitBlockConfirmations = developmentChains.includes(network.name)
         ? 1
         : VERIFICATION_BLOCK_CONFIRMATIONS
