@@ -63,6 +63,7 @@ This will be the dynamic for each challenge:
 18. <a href="https://github.com/pinalikefruit/ethernaut/tree/18-magic-number"> Magic Number </a>
 19. <a href="https://github.com/pinalikefruit/ethernaut/tree/19-alien-codex"> Alien Codex </a>
 20. <a href="https://github.com/pinalikefruit/ethernaut/tree/20-denialx"> Denial </a>
+21. <a href="https://github.com/pinalikefruit/ethernaut/tree/21-shop"> Shop </a>
 
 
 ### Built With
