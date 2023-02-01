@@ -64,6 +64,7 @@ This will be the dynamic for each challenge:
 19. <a href="https://github.com/pinalikefruit/ethernaut/tree/19-alien-codex"> Alien Codex </a>
 20. <a href="https://github.com/pinalikefruit/ethernaut/tree/20-denialx"> Denial </a>
 21. <a href="https://github.com/pinalikefruit/ethernaut/tree/21-shop"> Shop </a>
+22. <a href="https://github.com/pinalikefruit/ethernaut/tree/22-dex"> Dex </a>
 
 
 ### Built With
