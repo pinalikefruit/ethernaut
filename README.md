@@ -6,28 +6,32 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel27.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel26.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Good Samaritan [SOLUTION]</h3>
+  <h1 align="center">DoubleEntryPoint [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Good Samaritan!
+    🍍Hi  here you can found one of the solution for the challenge DoubleEntryPoint!
   </p>
 </div>
 
 ## Challenge
-This instance represents a Good Samaritan that is wealthy and ready to donate some coins to anyone requesting it.
+This level features a CryptoVault with special functionality, the sweepToken function. This is a common function used to retrieve tokens stuck in a contract. The CryptoVault operates with an underlying token that can't be swept, as it is an important core logic component of the CryptoVault. Any other tokens can be swept.
 
-Would you be able to drain all the balance from his Wallet?
+The underlying token is an instance of the DET token implemented in the DoubleEntryPoint contract definition and the CryptoVault holds 100 units of it. Additionally the CryptoVault also holds 100 of LegacyToken LGT.
+
+In this level you should figure out where the bug is in CryptoVault and protect it from being drained out of tokens.
+
+The contract features a Forta contract where any user can register its own detection bot contract. Forta is a decentralized, community-based monitoring network to detect threats and anomalies on DeFi, NFT, governance, bridges and other Web3 systems as quickly as possible. Your job is to implement a detection bot and register it in the Forta contract. The bot's implementation will need to raise correct alerts to prevent potential attacks or bug exploits.
 
 > Solution: 
-  [Good Samaritan Contract](https://goerli.etherscan.io/address/0x96e0e6987347b0d50a43c93a0fc949a0b1edc1b7#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0x96e0E6987347b0D50A43C93A0fc949a0B1eDC1B7#internaltx)
+  [DoubleEntryPoint Contract](https://goerli.etherscan.io/address/0xd43B3478Ebabe55aFB7C1367c448B142B10fEc25)) || [Hack Contract](https://goerli.etherscan.io/address/0x649CD6daDc4eD44aa760B13249c8a762ebFAeeBd)
 ## Complementary information to solve the challenge
-* [Solidity Custom Errors](https://blog.soliditylang.org/2021/04/21/custom-errors/)
+* How does a double entry point work for a token contract?
 
-<!-- ## Extra help -->
-
+## Extra help
+A double entry point for a token contract refers to a design pattern where the contract has two separate functions for the same action, one for regular transactions and one for token transfers. The idea is to separate the logic of token transfers from the rest of the contract's functionality in order to improve security and performance. For example, a contract might have a "transfer" function that can be called by anyone, but a separate "transferFrom" function that can only be called by approved users or smart contracts. This allows for more fine-grained control over token transfers and can help prevent potential vulnerabilities.
 
 # Getting Started
 
@@ -50,7 +54,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 27-good-samaritan
+git checkout 26-double-entry-point ▓
 ```
 
 Then install dependencies
@@ -59,7 +63,11 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-If you follow the `requestDonation()` function at some point you will see `transfer()` and inside there is another instance for `notify()` we have control over this function, so in our contract with sets a sentence, and the First, the amount is equal to or less than 10, so `revert` when this happens, the function calls `transferRemainder()` and then we let the transfer of the entire amount pass to us.
+We can build a contract that extends Forta IDetectionBot and plug it into the DoubleEntryPoint. By doing that, we should be able to prevent the exploit when the Vault sweepToken trigger the `LegacyToken.transfer()` that will trigger the `DoubleEntryPoint.delegateTransfer()` that will trigger (before executing the function code) the fortaNotify function modifier.
+
+`await contract.forta()`
+Then, setDetectionBot in Forta contract with the bot address. 
+
 ### Run Solution [automated solution]
  <!-- - `yarn test:unit` for local testing  -->
  - `yarn deploy:goerli` remember change address in `helper-hardhat-config.ts`
@@ -69,7 +77,7 @@ If you follow the `requestDonation()` function at some point you will see `trans
 > You can see all code explain
 
 ### Preventative Techniques
-> It is not safe to assume that the error was thrown by the immediate target of the contract call
+> Use Forta for prevent attack.
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.

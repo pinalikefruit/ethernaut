@@ -1,7 +1,7 @@
 {
-  "name": "good-samaritan",
+  "name": "double-entry-point",
   "version": "1.0.0",
-  "description": "Would you be able to drain all the balance from his Wallet?",
+  "description": "In this level you should figure out where the bug is in CryptoVault and protect it from being drained out of tokens.",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",
