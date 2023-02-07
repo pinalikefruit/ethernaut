@@ -26,7 +26,7 @@ In this level you should figure out where the bug is in CryptoVault and protect 
 The contract features a Forta contract where any user can register its own detection bot contract. Forta is a decentralized, community-based monitoring network to detect threats and anomalies on DeFi, NFT, governance, bridges and other Web3 systems as quickly as possible. Your job is to implement a detection bot and register it in the Forta contract. The bot's implementation will need to raise correct alerts to prevent potential attacks or bug exploits.
 
 > Solution: 
-  [DoubleEntryPoint Contract](https://goerli.etherscan.io/address/0xcb59e89ff1ab744353163150961789bee3c9000a)) || [Hack Contract](https://goerli.etherscan.io/address/0xcbc328bde6704beed7bf394d957d2929fedfff4f)
+ [Forta Contract](https://goerli.etherscan.io/address/0xb7381f8EFdc366c1d7F2F1F2Eeb2B56975DDa69B) || [DoubleEntryPoint Contract](https://goerli.etherscan.io/address/0x90d90753b7a19c63eadc95a33fbd3f89bbd6cf62#internaltx)) || [Hack Bot Contract](https://goerli.etherscan.io/address/0xb57bAa3b16e299BC1857B90403de8aaCB4Ee757b)
 ## Complementary information to solve the challenge
 * How does a double entry point work for a token contract?
 
@@ -65,8 +65,9 @@ yarn
 ## Solution explained
 We can build a contract that extends Forta IDetectionBot and plug it into the DoubleEntryPoint. By doing that, we should be able to prevent the exploit when the Vault sweepToken trigger the `LegacyToken.transfer()` that will trigger the `DoubleEntryPoint.delegateTransfer()` that will trigger (before executing the function code) the fortaNotify function modifier.
 
-`await contract.forta()`
-Then, setDetectionBot in Forta contract with the bot address. 
+1. `await contract.forta()`
+2. Deploy contract using forta address in the constructor.
+3. Then, setDetectionBot in Forta contract with the bot address deploy. 
 
 ### Run Solution [automated solution]
  <!-- - `yarn test:unit` for local testing  -->
