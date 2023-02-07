@@ -26,7 +26,7 @@ In this level you should figure out where the bug is in CryptoVault and protect 
 The contract features a Forta contract where any user can register its own detection bot contract. Forta is a decentralized, community-based monitoring network to detect threats and anomalies on DeFi, NFT, governance, bridges and other Web3 systems as quickly as possible. Your job is to implement a detection bot and register it in the Forta contract. The bot's implementation will need to raise correct alerts to prevent potential attacks or bug exploits.
 
 > Solution: 
-  [DoubleEntryPoint Contract](https://goerli.etherscan.io/address/0xd43B3478Ebabe55aFB7C1367c448B142B10fEc25)) || [Hack Contract](https://goerli.etherscan.io/address/0x649CD6daDc4eD44aa760B13249c8a762ebFAeeBd)
+  [DoubleEntryPoint Contract](https://goerli.etherscan.io/address/0xcb59e89ff1ab744353163150961789bee3c9000a)) || [Hack Contract](https://goerli.etherscan.io/address/0xcbc328bde6704beed7bf394d957d2929fedfff4f)
 ## Complementary information to solve the challenge
 * How does a double entry point work for a token contract?
 
