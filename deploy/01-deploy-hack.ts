@@ -13,10 +13,10 @@ const deployHack: DeployFunction = async function(
     let contractAddress:string 
 
     if(developmentChains.includes(network.name)){
-        const mock = await deployments.get("PuzzleWallet")
+        const mock = await deployments.get("Motorbike")
         contractAddress = mock.address        
     } else {
-        contractAddress = networkConfig[network.config.chainId!]["contractAddress"]!
+        contractAddress = networkConfig[network.config.chainId!]["implemetationAddress"]!
     }
     log("--------------------------------------")
     log("Deploying Hack and waiting for confirmations...")

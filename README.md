@@ -6,35 +6,29 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel24.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel25.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">Puzzle Wallet [SOLUTION]</h3>
+  <h1 align="center">Motorbike [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge Puzzle Wallet!
+    🍍Hi  here you can found one of the solution for the challenge Motorbike!
   </p>
 </div>
 
 ## Challenge
-Nowadays, paying for DeFi operations is impossible, fact.
+Ethernaut's motorbike has a brand new upgradeable engine design.
 
-A group of friends discovered how to slightly decrease the cost of performing multiple transactions by batching them in one transaction, so they developed a smart contract for doing this.
-
-They needed this contract to be upgradeable in case the code contained a bug, and they also wanted to prevent people from outside the group from using it. To do so, they voted and assigned two people with special roles in the system: The admin, which has the power of updating the logic of the smart contract. The owner, which controls the whitelist of addresses allowed to use the contract. The contracts were deployed, and the group was whitelisted. Everyone cheered for their accomplishments against evil miners.
-
-Little did they know, their lunch money was at risk…
-
-  You'll need to hijack this wallet to become the admin of the proxy.
-
+Would you be able to selfdestruct its engine and make the motorbike unusable ?
 > Solution: 
- [Puzzle Wallet Contract](https://goerli.etherscan.io/address/0xb1D4cB5eC52F9BB2a713BAF6E3aB1CE1Ca04Eda7#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0x3Eb19B1da17B6E36f80EB30b18E821bB1f256504)
+ [Engine Contract](https://goerli.etherscan.io/address/0x8c8f9730c98140f4ee73aa3b40ee25d23f80214d#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0x8e639e7144726337ea673b35e2385b1c4F95c561)
 ## Complementary information to solve the challenge
-* Understanding how delegatecalls work and how msg.sender and msg.value behaves when performing one.
-* Knowing about proxy patterns and the way they handle storage variables.
+* [EIP-1967](https://eips.ethereum.org/EIPS/eip-1967)
+* [UUPS upgradeable pattern](https://forum.openzeppelin.com/t/uups-proxies-tutorial-solidity-javascript/7786)
+* [Initializable contract](https://github.com/OpenZeppelin/openzeppelin-upgrades/blob/master/packages/core/contracts/Initializable.sol)
 
 ## Extra help
-If you wanna understand how proxy work I recommended  this video by Patrick [Proxy Hardhat](https://www.youtube.com/watch?v=gyMwXuJrbJQ&t=103991s)  and inside the video, you can find more resources.
+If you wanna understand how proxy work I recommended  this video by Patrick [Proxy seccion - Hardhat](https://www.youtube.com/watch?v=gyMwXuJrbJQ&t=103991s)  and inside the video, you can find more resources.
 
 # Getting Started
 
@@ -57,7 +51,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 24-puzzle-wallet
+git checkout 25-motorbike
 ```
 
 Then install dependencies
@@ -66,7 +60,10 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-I explained how the attack work in the `contracts/Hack.sol` step by step.
+- First you need the implementation address in our case Engine Contract, two ways for get it. 
+  You can see what other contract is deployed in etherscan and the other way if you remember there is a special place for implementation in specific slot. (see `motorbiiker.staging.test.ts`)
+- When call `initialize()` we convert in `upgrader`. Then, we can call to `upgradeToAndCall()` and authorize for new implementation and finally call selfdestruct() in our contract.
+
 ### Run Solution [automated solution]
  <!-- - `yarn test:unit` for local testing  -->
  - Update contract address inside `helper-hardhat-config.ts` file.
@@ -77,8 +74,7 @@ I explained how the attack work in the `contracts/Hack.sol` step by step.
 > You can see all code explain
 
 ### Preventative Techniques
-> Audit your contract 
-Using proxy contracts is highly recommended to bring upgradeability features and reduce the deployment's gas cost. However, developers must be careful not to introduce storage collisions
+> Never leave implementation contracts uninitialized
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.

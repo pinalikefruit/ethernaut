@@ -1,7 +1,7 @@
 {
-  "name": "puzzle-wallet",
+  "name": "motorbike",
   "version": "1.0.0",
-  "description": "You'll need to hijack this wallet to become the admin of the proxy.",
+  "description": "Would you be able to selfdestruct its engine and make the motorbike unusable ?",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",
