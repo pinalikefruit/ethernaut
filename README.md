@@ -6,32 +6,35 @@
 <br />
 <div align="center">
   <a href="https://ethernaut.openzeppelin.com/">
-    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel26.svg" alt="" width="800" height="485">
+    <img src="https://ethernaut.openzeppelin.com/imgs/BigLevel24.svg" alt="" width="800" height="485">
   </a>
 
-  <h1 align="center">DoubleEntryPoint [SOLUTION]</h3>
+  <h1 align="center">Puzzle Wallet [SOLUTION]</h3>
 
   <p align="center">
-    🍍Hi  here you can found one of the solution for the challenge DoubleEntryPoint!
+    🍍Hi  here you can found one of the solution for the challenge Puzzle Wallet!
   </p>
 </div>
 
 ## Challenge
-This level features a CryptoVault with special functionality, the sweepToken function. This is a common function used to retrieve tokens stuck in a contract. The CryptoVault operates with an underlying token that can't be swept, as it is an important core logic component of the CryptoVault. Any other tokens can be swept.
+Nowadays, paying for DeFi operations is impossible, fact.
 
-The underlying token is an instance of the DET token implemented in the DoubleEntryPoint contract definition and the CryptoVault holds 100 units of it. Additionally the CryptoVault also holds 100 of LegacyToken LGT.
+A group of friends discovered how to slightly decrease the cost of performing multiple transactions by batching them in one transaction, so they developed a smart contract for doing this.
 
-In this level you should figure out where the bug is in CryptoVault and protect it from being drained out of tokens.
+They needed this contract to be upgradeable in case the code contained a bug, and they also wanted to prevent people from outside the group from using it. To do so, they voted and assigned two people with special roles in the system: The admin, which has the power of updating the logic of the smart contract. The owner, which controls the whitelist of addresses allowed to use the contract. The contracts were deployed, and the group was whitelisted. Everyone cheered for their accomplishments against evil miners.
 
-The contract features a Forta contract where any user can register its own detection bot contract. Forta is a decentralized, community-based monitoring network to detect threats and anomalies on DeFi, NFT, governance, bridges and other Web3 systems as quickly as possible. Your job is to implement a detection bot and register it in the Forta contract. The bot's implementation will need to raise correct alerts to prevent potential attacks or bug exploits.
+Little did they know, their lunch money was at risk…
+
+  You'll need to hijack this wallet to become the admin of the proxy.
 
 > Solution: 
- [Forta Contract](https://goerli.etherscan.io/address/0xb7381f8EFdc366c1d7F2F1F2Eeb2B56975DDa69B) || [DoubleEntryPoint Contract](https://goerli.etherscan.io/address/0x90d90753b7a19c63eadc95a33fbd3f89bbd6cf62#internaltx)) || [Hack Bot Contract](https://goerli.etherscan.io/address/0xb57bAa3b16e299BC1857B90403de8aaCB4Ee757b)
+ [Puzzle Wallet Contract](https://goerli.etherscan.io/address/0xb1D4cB5eC52F9BB2a713BAF6E3aB1CE1Ca04Eda7#internaltx) || [Hack Contract](https://goerli.etherscan.io/address/0x3Eb19B1da17B6E36f80EB30b18E821bB1f256504)
 ## Complementary information to solve the challenge
-* How does a double entry point work for a token contract?
+* Understanding how delegatecalls work and how msg.sender and msg.value behaves when performing one.
+* Knowing about proxy patterns and the way they handle storage variables.
 
 ## Extra help
-A double entry point for a token contract refers to a design pattern where the contract has two separate functions for the same action, one for regular transactions and one for token transfers. The idea is to separate the logic of token transfers from the rest of the contract's functionality in order to improve security and performance. For example, a contract might have a "transfer" function that can be called by anyone, but a separate "transferFrom" function that can only be called by approved users or smart contracts. This allows for more fine-grained control over token transfers and can help prevent potential vulnerabilities.
+If you wanna understand how proxy work I recommended  this video by Patrick [Proxy Hardhat](https://www.youtube.com/watch?v=gyMwXuJrbJQ&t=103991s)  and inside the video, you can find more resources.
 
 # Getting Started
 
@@ -54,7 +57,7 @@ Clone this repo
 ```
 git clone https://github.com/pinalikefruit/ethernaut
 cd ethernaut
-git checkout 26-double-entry-point ▓
+git checkout 24-puzzle-wallet
 ```
 
 Then install dependencies
@@ -63,14 +66,10 @@ Then install dependencies
 yarn
 ```
 ## Solution explained
-We can build a contract that extends Forta IDetectionBot and plug it into the DoubleEntryPoint. By doing that, we should be able to prevent the exploit when the Vault sweepToken trigger the `LegacyToken.transfer()` that will trigger the `DoubleEntryPoint.delegateTransfer()` that will trigger (before executing the function code) the fortaNotify function modifier.
-
-1. `await contract.forta()`
-2. Deploy contract using forta address in the constructor.
-3. Then, setDetectionBot in Forta contract with the bot address deploy. 
-
+I explained how the attack work in the `contracts/Hack.sol` step by step.
 ### Run Solution [automated solution]
  <!-- - `yarn test:unit` for local testing  -->
+ - Update contract address inside `helper-hardhat-config.ts` file.
  - `yarn deploy:goerli` remember change address in `helper-hardhat-config.ts`
  - `yarn test:staging` for goerli network, just change the contract address in `helper-hardhat-config.ts`
 
@@ -78,7 +77,8 @@ We can build a contract that extends Forta IDetectionBot and plug it into the Do
 > You can see all code explain
 
 ### Preventative Techniques
-> Use Forta for prevent attack.
+> Audit your contract 
+Using proxy contracts is highly recommended to bring upgradeability features and reduce the deployment's gas cost. However, developers must be careful not to introduce storage collisions
 ## License
 
 Distributed under the WTFPL License. See `LICENSE.txt` for more information.

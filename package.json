@@ -1,7 +1,7 @@
 {
-  "name": "double-entry-point",
+  "name": "puzzle-wallet",
   "version": "1.0.0",
-  "description": "In this level you should figure out where the bug is in CryptoVault and protect it from being drained out of tokens.",
+  "description": "You'll need to hijack this wallet to become the admin of the proxy.",
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",

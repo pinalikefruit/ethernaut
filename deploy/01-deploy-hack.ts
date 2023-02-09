@@ -13,7 +13,7 @@ const deployHack: DeployFunction = async function(
     let contractAddress:string 
 
     if(developmentChains.includes(network.name)){
-        const mock = await deployments.get("DoubleEntryPoint")
+        const mock = await deployments.get("PuzzleWallet")
         contractAddress = mock.address        
     } else {
         contractAddress = networkConfig[network.config.chainId!]["contractAddress"]!
@@ -25,7 +25,7 @@ const deployHack: DeployFunction = async function(
         ? 1
         : VERIFICATION_BLOCK_CONFIRMATIONS
     log("---------------------------------------")
-    const hack = await deploy("HackBot", {
+    const hack = await deploy("Hack", {
         from : hacker,
         args: args,
         log: true,
