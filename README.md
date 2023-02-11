@@ -69,6 +69,7 @@ This will be the dynamic for each challenge:
 24. <a href="https://github.com/pinalikefruit/ethernaut/tree/24-puzzle-wallet"> Puzzle Wallet</a>
 25. <a href="https://github.com/pinalikefruit/ethernaut/tree/25-motorbike"> Motorbike </a>
 26. <a href="https://github.com/pinalikefruit/ethernaut/tree/26-double-entry-point"> Double entry point</a>
+27. <a href="https://github.com/pinalikefruit/ethernaut/tree/27-good-samaritan"> Good Samaritan </a>
 28. <a href="https://github.com/pinalikefruit/ethernaut/tree/28-gatekeeper-three"> Gatekeeper three</a>
 
 
