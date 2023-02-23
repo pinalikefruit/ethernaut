@@ -61,7 +61,7 @@ yarn
 ```
 ## Solution explained
 
-How is it not possible to access a smart contract, You can use a `ethers.js` library and apply this method [getContractAt] (https://docs.ethers.org/v5/api/providers/provider/#Provider-getStorageAt), you can see all the code in `test/ staging/vault.staging.test.ts`
+How is it not possible to access a smart contract, You can use a `ethers.js` library and apply this method [getContractAt](https://docs.ethers.org/v5/api/providers/provider/#Provider-getStorageAt), you can see all the code in `test/ staging/vault.staging.test.ts`
 
 ### Run test [automated solution]
  - `yarn test:unit` for local testing 
