@@ -65,7 +65,10 @@ You will beat this level if
      ```solidity
      receive() external payable {}
      ```
-    
+    and 
+    ```solidity
+    fallback() external payable {}
+    ```
      It does not receive anything and does not return anything, but it is executed when we send ether to the contract.
     
      With this it seems to me dear friend that you are ready to start the challenge!
